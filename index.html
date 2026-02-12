@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa del Pianista | Clases de Piano a Domicilio</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Remix Icon for modern SVG icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <img src="logo.png" alt="Casa del Pianista Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#contacto">Contactar</a></li>
+                    <li><a href="#" class="icon-btn" title="Intranet"><i class="ri-user-line"></i></a></li>
+                    <li><a href="#" class="icon-btn" id="admin-btn" title="Panel Administrativo"><i
+                                class="ri-settings-3-line"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="sheet-background"></div>
+            <div class="container hero-content">
+                <div class="welcome-badge">¡Bienvenidos!</div>
+                <h1>Casa del Pianista</h1>
+                <p class="subtitle">Clases de piano personalizadas a la comodidad de tu hogar.</p>
+                <div class="cta-group">
+                    <a href="https://wa.me/51939111322" class="btn btn-primary"><i class="ri-whatsapp-line"></i>
+                        Contáctanos</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="info" class="info-section">
+            <div class="container">
+                <div class="grid">
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <i class="ri-map-pin-2-line"></i>
+                        </div>
+                        <h3>Ubicación</h3>
+                        <p>Clases a domicilio en Tarapoto, Morales y Banda de Shilcayo, Región San Martín.</p>
+                    </div>
+
+                    <div class="info-card highlight">
+                        <div class="icon-wrapper">
+                            <i class="ri-money-dollar-circle-line"></i>
+                        </div>
+                        <h3>Inversión</h3>
+                        <p><strong>Matrícula:</strong> S/ 50 (Incluye Materiales)</p>
+                        <p class="price">S/ 200 <span>mensual</span></p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <i class="ri-calendar-event-line"></i>
+                        </div>
+                        <h3>Horarios</h3>
+                        <p>8 clases al mes <br> 2 veces por semana <br> 1 hora cada clase</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <i class="ri-music-2-line"></i>
+                        </div>
+                        <h3>Sin Piano?</h3>
+                        <p>Si no tienes piano en casa, ¡el profesor lleva el suyo! No hay excusas para no aprender.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-strip">
+            <div class="container">
+                <h2>¿Listo para empezar tu viaje musical?</h2>
+                <a href="https://wa.me/51939111322" class="whatsapp-float">
+                    <i class="ri-whatsapp-fill"></i>
+                    <span>939 111 322</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Casa del Pianista E.I.R.L. | San Martín, Perú.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Autenticación -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <i class="ri-shield-keyhole-line"></i>
+                <h2>Panel Administrativo</h2>
+                <p class="modal-subtitle">Sistema de Gestión Académica</p>
+            </div>
+            <div class="modal-body">
+                <div class="warning-box">
+                    <i class="ri-alert-line"></i>
+                    <p><strong>Acceso Restringido</strong><br>Solo para personal autorizado</p>
+                </div>
+                <div class="info-box">
+                    <h3>¿Qué puedes hacer en el panel?</h3>
+                    <ul>
+                        <li><i class="ri-check-line"></i> Gestión de alumnos y registros</li>
+                        <li><i class="ri-check-line"></i> Control de horarios y clases</li>
+                        <li><i class="ri-check-line"></i> Administración financiera</li>
+                        <li><i class="ri-check-line"></i> Gestión de repertorio musical</li>
+                        <li><i class="ri-check-line"></i> Administración de personal</li>
+                    </ul>
+                </div>
+                <form id="auth-form">
+                    <label for="access-code">Código de Acceso</label>
+                    <input type="password" id="access-code" placeholder="Ingrese su código" autocomplete="off" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ri-login-box-line"></i> Ingresar
+                    </button>
+                    <p class="error-message" id="auth-error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

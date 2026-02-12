@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Casa del Pianista</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebar-close">
+                <i class="ri-close-line"></i>
+            </button>
+            <div class="logo-area">
+                <img src="logo-admin.png" alt="Casa del Pianista" class="admin-logo">
+                <p>Sistema de Gestión Académica</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="inicio">
+                <i class="ri-home-4-line"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#" class="nav-item" data-section="registrar-alumno">
+                <i class="ri-user-add-line"></i>
+                <span>Registrar Alumno</span>
+            </a>
+            <a href="#" class="nav-item" data-section="lista-alumnos">
+                <i class="ri-group-line"></i>
+                <span>Lista de Alumnos</span>
+            </a>
+            <a href="#" class="nav-item" data-section="cartera">
+                <i class="ri-briefcase-line"></i>
+                <span>Cartera de Clientes</span>
+            </a>
+            <a href="#" class="nav-item" data-section="ventas">
+                <i class="ri-shopping-cart-line"></i>
+                <span>Registrar Ventas</span>
+            </a>
+            <a href="#" class="nav-item" data-section="finanzas">
+                <i class="ri-money-dollar-circle-line"></i>
+                <span>Pagos y Finanzas</span>
+            </a>
+            <a href="#" class="nav-item" data-section="horarios">
+                <i class="ri-music-2-line"></i>
+                <span>Gestión de Horarios</span>
+            </a>
+            <a href="#" class="nav-item" data-section="repertorios">
+                <i class="ri-file-music-line"></i>
+                <span>Repertorios</span>
+            </a>
+            <a href="#" class="nav-item" data-section="personal">
+                <i class="ri-team-line"></i>
+                <span>Gestión del Personal</span>
+            </a>
+            <a href="#" class="nav-item" data-section="buzon">
+                <i class="ri-mail-line"></i>
+                <span>Buzón de Mensajes</span>
+                <span class="nav-badge" id="inbox-badge">3</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="ri-user-line"></i>
+                </div>
+                <div class="user-details">
+                    <h4 id="staff-name">Administrador</h4>
+                    <p id="staff-role">Director Administrativo</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logout-btn">
+                <i class="ri-logout-box-line"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+            <div class="footer-text">
+                <p>© 2026 Casa del Pianista E.I.R.L.</p>
+                <p>RUC: 20609597381</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="top-header">
+            <button class="hamburger" id="hamburger">
+                <i class="ri-menu-line"></i>
+            </button>
+            <h1 id="page-title">Inicio</h1>
+            <div class="header-actions">
+                <button class="icon-btn" id="notification-btn">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="badge" id="unread-count">3</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <!-- Inicio Section -->
+            <section id="inicio-section" class="content-section active">
+                <div class="welcome-banner">
+                    <h2>Bienvenido, <span id="welcome-name">Tony Alvarado</span></h2>
+                    <p>Panel de administración del sistema académico</p>
+                </div>
+
+                <!-- Personal Information Card -->
+                <div class="info-cards">
+                    <div class="info-card large">
+                        <div class="card-header">
+                            <h3><i class="ri-user-3-line"></i> Información Personal</h3>
+                        </div>
+                        <div class="personal-info" id="personal-info">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backup Section -->
+                <div class="backup-section">
+                    <h3><i class="ri-save-line"></i> Copia de Seguridad</h3>
+                    <p>Guarda o restaura todos los datos del sistema</p>
+                    <div class="backup-buttons">
+                        <button class="btn btn-primary" id="backup-save-btn">
+                            <i class="ri-download-line"></i> Guardar Copia de Seguridad
+                        </button>
+                        <button class="btn btn-secondary" id="backup-restore-btn">
+                            <i class="ri-upload-line"></i> Subir Copia de Seguridad
+                        </button>
+                        <input type="file" id="backup-file-input" accept=".json" style="display: none;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Section -->
+            <section id="personal-section" class="content-section">
+                <div class="section-actions">
+                    <button class="btn btn-primary" id="add-staff-btn">
+                        <i class="ri-user-add-line"></i> Agregar Personal
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table" id="staff-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <th>Cargo</th>
+                                <th>Código de Acceso</th>
+                                <th>Nivel de Acceso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Placeholder sections for other menu items -->
+
+            <!-- Perfil del Alumno Section -->
+            <section id="perfil-alumno-section" class="content-section">
+                <div class="section-header-compact">
+                    <button class="btn-back" onclick="showSection('lista-alumnos')">
+                        <i class="ri-arrow-left-line"></i> Volver a Lista
+                    </button>
+                    <div class="profile-main-info">
+                        <div id="prof-avatar" class="profile-avatar-large">LP</div>
+                        <div class="profile-name-details">
+                            <h2 id="prof-name">Cargando Nombre...</h2>
+                            <span id="prof-code" class="profile-code-tag">Cargando Código...</span>
+                        </div>
+                    </div>
+                    <div class="profile-quick-stats">
+                        <div class="stat-item">
+                            <i class="ri-line-chart-line"></i>
+                            <div class="stat-info">
+                                <span class="stat-label">Acumuladas</span>
+                                <span id="prof-clases-total" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="ri-calendar-event-line"></i>
+                            <div class="stat-info">
+                                <span class="stat-label">Ciclo</span>
+                                <span id="prof-clases-ciclo" class="stat-value">0/8</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="ri-award-line"></i>
+                            <div class="stat-info">
+                                <span class="stat-label">Nota</span>
+                                <span id="prof-nota" class="stat-value">--/20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-tabs">
+                    <button class="profile-tab-btn active" data-tab="resumen">Resumen</button>
+                    <button class="profile-tab-btn" data-tab="silabos">Sílabos</button>
+                    <button class="profile-tab-btn" data-tab="calificacion">Calificación</button>
+                    <button class="profile-tab-btn" data-tab="asignacion">Asignación</button>
+                    <button class="profile-tab-btn" data-tab="asistencia">Asistencia</button>
+                    <button class="profile-tab-btn" data-tab="pagos">Pagos</button>
+                    <button class="profile-tab-btn" data-tab="repertorio">Repertorio</button>
+                </div>
+
+                <div class="tab-content active" id="tab-resumen">
+                    <div class="profile-grid">
+                        <div class="info-card">
+                            <h3><i class="ri-user-line"></i> Información Personal</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Nombres Completos</label>
+                                    <p id="info-full-name">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Edad</label>
+                                    <p id="info-edad">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Sexo</label>
+                                    <p id="info-sexo">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Fecha de Nacimiento</label>
+                                    <p id="info-cumpleanos">-</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="ri-book-open-line"></i> Datos Académicos</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Instrumento</label>
+                                    <p id="info-instrumento">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Nivel Actual</label>
+                                    <p id="info-nivel">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Fecha de Registro</label>
+                                    <p id="info-registro">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Frecuencia</label>
+                                    <p id="info-frecuencia">-</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="ri-parent-line"></i> Contacto y Otros</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Apoderado</label>
+                                    <p id="info-apoderado">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Celular</label>
+                                    <p id="info-celular">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Dirección</label>
+                                    <p id="info-direccion">-</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Referencia</label>
+                                    <p id="info-referencia">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-silabos">
+                    <div id="syllabus-modules-grid" class="syllabus-grid">
+                        <!-- Module Cards 1-6 -->
+                        <div class="module-card" onclick="expandModule(1)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-1"></i></div>
+                                <h4>Módulo 1</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-1" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-1">0%</span>
+                                </div>
+                                <div id="status-mod-1" class="module-status">En curso</div>
+                                <div id="stats-mod-1" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" onclick="expandModule(2)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-2"></i></div>
+                                <h4>Módulo 2</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-2" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-2">0%</span>
+                                </div>
+                                <div id="status-mod-2" class="module-status">Pendiente</div>
+                                <div id="stats-mod-2" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" onclick="expandModule(3)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-3"></i></div>
+                                <h4>Módulo 3</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-3" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-3">0%</span>
+                                </div>
+                                <div id="status-mod-3" class="module-status">Pendiente</div>
+                                <div id="stats-mod-3" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" onclick="expandModule(4)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-4"></i></div>
+                                <h4>Módulo 4</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-4" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-4">0%</span>
+                                </div>
+                                <div id="status-mod-4" class="module-status">Pendiente</div>
+                                <div id="stats-mod-4" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" onclick="expandModule(5)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-5"></i></div>
+                                <h4>Módulo 5</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-5" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-5">0%</span>
+                                </div>
+                                <div id="status-mod-5" class="module-status">Pendiente</div>
+                                <div id="stats-mod-5" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                        <div class="module-card" onclick="expandModule(6)">
+                            <div class="module-card-header-row">
+                                <div class="module-icon"><i class="ri-number-6"></i></div>
+                                <h4>Módulo 6</h4>
+                            </div>
+                            <div class="module-info">
+                                <div class="module-progress-wrapper">
+                                    <div class="progress-bar-bg">
+                                        <div id="prog-mod-6" class="progress-bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span id="text-mod-6">0%</span>
+                                </div>
+                                <div id="status-mod-6" class="module-status">Pendiente</div>
+                                <div id="stats-mod-6" class="module-stats-mini"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module Details (Initially hidden) -->
+                    <div id="module-detail-view" class="module-detail-container" style="display: none;">
+                        <div class="detail-header">
+                            <button class="btn-back" onclick="closeModuleDetail()">
+                                <i class="ri-arrow-left-line"></i> Volver a Módulos
+                            </button>
+                            <h3 id="current-module-title">Módulo 1: Inicio</h3>
+                        </div>
+
+                        <div id="module-stats-banner" class="detail-stats-banner"></div>
+
+                        <!-- Topics Section -->
+                        <div class="syllabus-section">
+                            <div class="section-header">
+                                <h4><i class="ri-list-check"></i> Temas del Módulo</h4>
+                                <button class="btn-primary btn-sm" onclick="showAddTopicForm()">
+                                    <i class="ri-add-line"></i> Agregar Tema
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="syllabus-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Aprendido</th>
+                                            <th>Temática</th>
+                                            <th>Contenido</th>
+                                            <th>Evidencia</th>
+                                            <th>Logro</th>
+                                            <th>Nota</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="topics-body">
+                                        <!-- Generated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Repertoire Section -->
+                        <div class="syllabus-section mt-2">
+                            <div class="section-header">
+                                <h4><i class="ri-music-2-line"></i> Canciones del Nivel</h4>
+                                <div style="display:flex; gap:10px;">
+                                    <button class="btn-secondary btn-sm" onclick="openArchivedSongsModal()">
+                                        <i class="ri-archive-line"></i> Ver Archivados
+                                    </button>
+                                    <button class="btn-primary btn-sm" onclick="showAddSongForm()">
+                                        <i class="ri-add-line"></i> Agregar Canción
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="songs-container-split" id="songs-list-container">
+                                <div class="songs-section-column">
+                                    <h5><i class="ri-star-line"></i> Canciones Famosas</h5>
+                                    <div class="songs-grid-vertical" id="songs-list-famous">
+                                        <!-- Generated by JS -->
+                                    </div>
+                                </div>
+                                <div class="songs-section-column">
+                                    <h5><i class="ri-flask-line"></i> Canciones de Práctica</h5>
+                                    <div class="songs-grid-vertical" id="songs-list-practice">
+                                        <!-- Generated by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="module-footer-actions">
+                            <button id="btn-complete-module" class="btn-capsule primary"
+                                onclick="markModuleAsFinished()">
+                                <i class="ri-checkbox-circle-line"></i> Finalizar Módulo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Topic Form Modal (Simulated in-place) -->
+                    <div id="topic-form-modal" class="mini-modal" style="display: none;">
+                        <div class="mini-modal-content">
+                            <h4 id="topic-modal-title">Nuevo Tema</h4>
+                            <input type="hidden" id="edit-topic-index">
+                            <div class="form-group-minimal">
+                                <label>Temática</label>
+                                <input type="text" id="topic-title" placeholder="Ej: Postura y digitación">
+                            </div>
+                            <div class="form-group-minimal">
+                                <label>Contenido</label>
+                                <textarea id="topic-content" placeholder="Qué se enseñará..."></textarea>
+                            </div>
+                            <div class="form-row-minimal">
+                                <div class="form-group-minimal">
+                                    <label>Evidencia</label>
+                                    <input type="text" id="topic-evidence" placeholder="Práctica evaluada...">
+                                </div>
+                                <div class="form-group-minimal">
+                                    <label>Logro</label>
+                                    <input type="text" id="topic-achievement" placeholder="Qué logrará...">
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="topic-evaluated">
+                                    <span class="checkmark"></span> Evaluable
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="topic-is-exam"
+                                        onchange="document.getElementById('exam-type-container').style.display = this.checked ? 'block' : 'none'">
+                                    <span class="checkmark"></span> Examen
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="topic-is-task"
+                                        onchange="document.getElementById('task-type-container').style.display = this.checked ? 'block' : 'none'">
+                                    <span class="checkmark"></span> Tarea
+                                </label>
+                            </div>
+                            <div id="exam-type-container" class="form-group-minimal"
+                                style="display: none; margin-top: 0.5rem;">
+                                <label>Tipo de Examen</label>
+                                <select id="topic-exam-type">
+                                    <option value="Parcial">Parcial</option>
+                                    <option value="Final">Final</option>
+                                </select>
+                            </div>
+                            <div id="task-type-container" class="form-group-minimal"
+                                style="display: none; margin-top: 0.5rem;">
+                                <label>Tipo de Tarea</label>
+                                <select id="topic-task-type">
+                                    <option value="Teórica">Teórica</option>
+                                    <option value="Rítmica">Rítmica</option>
+                                    <option value="Práctica Musical">Práctica Musical</option>
+                                </select>
+                            </div>
+                            <div class="mini-modal-actions">
+                                <button class="btn-secondary btn-sm" onclick="hideTopicForm()">Cancelar</button>
+                                <button class="btn-primary btn-sm" onclick="saveTopic()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ARCHIVED SONGS MODAL -->
+                    <div id="archived-songs-modal" class="modal">
+                        <div class="modal-content" style="max-width: 500px;">
+                            <div class="modal-header">
+                                <h2><i class="ri-archive-line"></i> Canciones Archivadas</h2>
+                                <span class="close-modal" onclick="closeArchivedSongsModal()">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <p style="color:#666; font-size:0.9rem; margin-bottom:15px;">
+                                    Estas canciones están ocultas del sílabo principal pero sus notas históricas se
+                                    mantienen.
+                                </p>
+                                <div id="archived-songs-list" class="archived-list-container">
+                                    <!-- Javascript renders items here -->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn-secondary" onclick="closeArchivedSongsModal()">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CUSTOM CONFIRM MODAL -->
+                    <div id="custom-confirm-modal" class="modal" style="z-index: 2100;">
+                        <div class="modal-content" style="max-width: 400px; text-align: center; padding: 20px;">
+                            <div style="margin-bottom: 15px;">
+                                <div id="confirm-icon"
+                                    style="font-size: 3rem; color: var(--primary-color); background: rgba(246, 176, 0, 0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                    <i class="ri-question-line"></i>
+                                </div>
+                            </div>
+                            <h3 id="confirm-title" style="margin-bottom: 10px;">¿Estás seguro?</h3>
+                            <p id="confirm-message"
+                                style="color: #666; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.5;">
+                                Mensaje de confirmación aquí...
+                            </p>
+                            <div class="modal-actions" style="display: flex; gap: 10px; justify-content: center;">
+                                <button id="confirm-btn-cancel" class="btn-secondary">Cancelar</button>
+                                <button id="confirm-btn-action" class="btn-primary">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CODE VIEW MODAL -->
+                    <!-- Song Form Modal -->
+                    <div id="song-form-modal" class="mini-modal" style="display: none;">
+                        <div class="mini-modal-content">
+                            <h4 id="song-modal-title">Nueva Canción</h4>
+                            <input type="hidden" id="edit-song-index">
+                            <div class="form-group-minimal">
+                                <label>Título de la Canción</label>
+                                <input type="text" id="song-title" placeholder="Ej: Estrellita dónde estás">
+                            </div>
+                            <div style="display: flex; gap: 0.8rem;">
+                                <div class="form-group-minimal" style="flex: 1;">
+                                    <label>Tipo</label>
+                                    <select id="song-category">
+                                        <option value="famosa">Famosa</option>
+                                        <option value="practica">Práctica</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-minimal" style="flex: 1;">
+                                    <label>Género</label>
+                                    <select id="song-genre">
+                                        <option value="infantil">Infantil</option>
+                                        <option value="clasica">Clásica</option>
+                                        <option value="popular">Popular</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group-minimal" style="margin-top: 0.5rem;">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="song-is-external">
+                                    <span class="checkmark"></span> Canción Externa (Solo este alumno)
+                                </label>
+                            </div>
+                            <div class="mini-modal-actions">
+                                <button class="btn-secondary btn-sm" onclick="hideSongForm()">Cancelar</button>
+                                <button class="btn-primary btn-sm" onclick="saveSong()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB ASIGNACION (Detailed View) -->
+                <div class="tab-content" id="tab-asignacion">
+                    <!-- Main List View -->
+                    <div id="assignments-list-view">
+                        <div id="assignments-modules-container">
+                            <!-- JS will render 6 mod-accordions here -->
+                        </div>
+                    </div>
+
+                    <!-- Detail View (Initially Hidden) -->
+                    <div id="assignment-detail-view" style="display: none;">
+                        <input type="hidden" id="assignment-student-id">
+                        <button class="btn-back" onclick="hideAssignmentDetail()">
+                            <i class="ri-arrow-left-line"></i> Volver a Lista
+                        </button>
+
+                        <div class="detail-header-card"
+                            style="margin-top: 1rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid var(--border-color);">
+                            <h2 id="detail-topic-title"
+                                style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.8rem;">Título de
+                                la Tarea</h2>
+
+                            <div class="detail-meta-grid"
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                                <div>
+                                    <h5
+                                        style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                                        Contenido</h5>
+                                    <p id="detail-topic-content" style="font-weight: 500;">-</p>
+                                </div>
+                                <div>
+                                    <h5
+                                        style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                                        Evidencia</h5>
+                                    <p id="detail-topic-evidence" style="font-weight: 500;">-</p>
+                                </div>
+                                <div>
+                                    <h5
+                                        style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                                        Logro Esperado</h5>
+                                    <p id="detail-topic-achievement" style="font-weight: 500;">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-content-layout"
+                            style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+                            <!-- Left: Description & Images -->
+                            <div class="detail-left-col">
+                                <div class="content-card"
+                                    style="background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                        <h4 style="margin: 0;"><i class="ri-list-check"></i> Subtareas y Recursos</h4>
+                                        <button class="btn-primary btn-sm" onclick="openSubtaskForm()">
+                                            <i class="ri-add-line"></i> Agregar Subtarea
+                                        </button>
+                                    </div>
+                                    <div id="subtasks-container"
+                                        style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                                        <!-- Subtask cards will be rendered here -->
+                                        <div class="empty-state-minimal"
+                                            style="text-align: center; padding: 2rem; color: #999; border: 1px dashed #ccc; border-radius: 8px;">
+                                            No hay subtareas agregadas aún.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Grading Action -->
+                            <div class="detail-right-col">
+                                <div class="grading-card sticky"
+                                    style="background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); position: sticky; top: 20px;">
+                                    <h4 style="margin-bottom: 1rem;"><i class="ri-award-line"></i> Calificación</h4>
+
+                                    <div id="detail-grade-status" style="margin-bottom: 1.5rem; text-align: center;">
+                                        <!-- Status Badge -->
+                                    </div>
+
+                                    <div id="detail-action-container">
+                                        <!-- Dynamic Button: Grade Task OR View Exam Grade -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-calificacion">
+                    <div class="grades-dashboard">
+                        <div class="grades-header">
+                            <div class="grades-title">
+                                <h3><i class="ri-award-line"></i> Control de Calificaciones</h3>
+                                <p>Evaluación técnica y artística por instrumento</p>
+                            </div>
+                            <div class="grades-actions">
+
+                                <button class="btn-primary btn-sm" onclick="showGradeEditor()">
+                                    <i class="ri-edit-line"></i> Nueva Evaluación
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- This container will be populated by JS -->
+                        <div id="grades-render-container">
+                            <div class="empty-tab-state">
+                                <i class="ri-clipboard-line"></i>
+                                <p>Cargando evaluaciones...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Editor Modal -->
+                    <div id="grade-editor-modal" class="mini-modal wide-modal">
+                        <div class="mini-modal-content">
+                            <div class="modal-header">
+                                <h3><i class="ri-edit-line"></i> Editor de Evaluación</h3>
+                                <button class="close-modal" onclick="hideGradeEditor()">&times;</button>
+                            </div>
+                            <div class="modal-body grading-form">
+                                <input type="hidden" id="grade-student-id" value="">
+                                <input type="hidden" id="grade-edit-index" value="">
+                                <div class="form-row-minimal">
+                                    <div class="form-group-minimal">
+                                        <label>Título del Examen / Evaluación</label>
+                                        <input type="text" id="grade-exam-title" placeholder="Ej: Examen Parcial">
+                                    </div>
+                                    <div class="form-group-minimal">
+                                        <label>Fecha de Examen</label>
+                                        <input type="date" id="grade-exam-date">
+                                    </div>
+                                    <div class="form-group-minimal">
+                                        <label>Módulo</label>
+                                        <select id="grade-module-selector" onchange="renderModuleSongsSelector([])">
+                                            <option value="1">Mod. 1</option>
+                                            <option value="2">Mod. 2</option>
+                                            <option value="3">Mod. 3</option>
+                                            <option value="4">Mod. 4</option>
+                                            <option value="5">Mod. 5</option>
+                                            <option value="6">Mod. 6</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group-minimal">
+                                        <label>Instrumento de Evaluación</label>
+                                        <select id="grade-instrument-selector" onchange="refreshGradeEditorTemplate()">
+                                            <option value="Piano">Piano</option>
+                                            <option value="Violín">Violín</option>
+                                            <option value="Guitarra">Guitarra</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row-minimal">
+                                    <div class="form-group-minimal">
+                                        <label
+                                            style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span>Seleccionar Canciones del Módulo</span>
+                                            <span id="selected-songs-count"
+                                                style="font-size: 0.7rem; color: var(--primary-color); font-weight: 600;">0
+                                                seleccionadas</span>
+                                        </label>
+                                        <div class="multiselect-container">
+                                            <div class="multiselect-trigger" onclick="toggleSongDropdown(event)">
+                                                <span id="multiselect-placeholder">Haz click para seleccionar
+                                                    canciones...</span>
+                                                <i class="ri-arrow-down-s-line"></i>
+                                            </div>
+                                            <div class="multiselect-dropdown" id="song-dropdown-list">
+                                                <div id="grade-songs-selector" class="songs-pill-dropdown-list">
+                                                    <!-- Generated by JS -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-minimal">
+                                        <label>Añadir Canción Personalizada (Extra)</label>
+                                        <div class="input-group-append">
+                                            <input type="text" id="custom-song-name" placeholder="Nombre de la canción">
+                                            <button class="btn-sm btn-secondary" onclick="addCustomSongPill()">
+                                                <i class="ri-add-line"></i> Añadir
+                                            </button>
+                                        </div>
+                                        <div id="custom-songs-container" class="songs-pill-selector mini"
+                                            style="margin-top:0.5rem; min-height:40px;">
+                                            <!-- Custom songs pills -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row-minimal">
+                                    <div class="form-group-minimal">
+                                        <label>Nota Examen Teórico (0-20)</label>
+                                        <input type="number" id="grade-theory-score" min="0" max="20"
+                                            placeholder="Opcional">
+                                    </div>
+                                    <div class="form-group-minimal" style="display:flex; align-items:flex-end;">
+                                        <p class="form-hint">Si se deja vacío, solo se considerará el examen práctico.
+                                            Puedes editar los nombres de las categorías y ítems abajo.</p>
+                                    </div>
+                                </div>
+
+                                <div class="rubric-grid-editor" id="rubric-editor-container">
+                                    <!-- Categorized items will be rendered here via JS -->
+                                </div>
+
+                                <div class="mini-modal-actions">
+                                    <button class="btn-secondary" onclick="hideGradeEditor()">Cancelar</button>
+                                    <button class="btn-primary" onclick="saveGrades()">Guardar Calificación</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- NEW: Satisfaction Preview Modal -->
+                    <div id="satisfaction-preview-modal" class="modal">
+                        <div class="modal-content">
+                            <div class="satisfaction-emoji">📊</div>
+                            <h3 id="satisfaction-title">Cálculo de Promedio</h3>
+                            <p id="satisfaction-text">Se han promediado los exámenes seleccionados correctamente. ¿Estás
+                                contento con el resultado para exportar?</p>
+
+                            <div id="satisfaction-stats-preview"
+                                style="margin: 1.5rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; text-align: left;">
+                                <!-- Simple summary here -->
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <button class="btn-secondary"
+                                    onclick="document.getElementById('satisfaction-preview-modal').classList.remove('active')">Volver
+                                    y Revisar</button>
+                                <button class="btn-primary" onclick="confirmAndExportBatch()">
+                                    <i class="ri-check-line"></i> Sí, Exportar PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-asistencia">
+                    <div class="attendance-controls-card">
+                        <div class="generation-header">
+                            <h3><i class="ri-calendar-check-line"></i> Cronograma de Asistencia</h3>
+                            <div class="export-actions">
+                                <button class="btn-capsule outline" onclick="exportAttendancePDF('clean')">
+                                    <i class="ri-file-pdf-line"></i> PDF Limpio
+                                </button>
+                                <button class="btn-capsule outline" onclick="exportAttendancePDF('progress')">
+                                    <i class="ri-pie-chart-line"></i> PDF Progreso
+                                </button>
+                            </div>
+                        </div>
+                        <div class="generation-form">
+                            <div class="form-group-compact">
+                                <label>Inicio del Ciclo</label>
+                                <input type="date" id="attendance-start-date" class="input-minimal">
+                            </div>
+                            <div class="form-group-compact">
+                                <label>Fin del Ciclo</label>
+                                <input type="date" id="attendance-end-date" class="input-minimal">
+                            </div>
+                            <button class="btn-capsule primary" onclick="generateStudentSchedule()">
+                                <i class="ri-magic-line"></i> Generar Cronograma
+                            </button>
+                            <button id="btn-save-attendance-cycle" class="btn-capsule success"
+                                style="display: none; background: #4caf50; color: white; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);"
+                                onclick="saveAttendanceCycle()">
+                                <i class="ri-save-line"></i> Guardar Ciclo Completado
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="attendance-table-container">
+                        <table class="attendance-table" id="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Día</th>
+                                    <th>Hora</th>
+                                    <th>Estado</th>
+                                    <th>Detalle / Recuperación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-table-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="attendance-summary-footer">
+                        <div class="debt-box">
+                            <span class="label">Bolsa de Recuperación:</span>
+                            <span id="attendance-debt-minutes" class="value">0 min</span>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Attendance History Section -->
+                    <div class="attendance-history-section">
+                        <div class="history-header">
+                            <h3><i class="ri-history-line"></i> Historial de Asistencias</h3>
+                        </div>
+                        <div class="history-list" id="attendance-history-list">
+                            <!-- History items will be rendered here -->
+                            <div
+                                style="text-align:center; padding: 2rem; color: #999; background: #f9f9f9; border-radius: 12px;">
+                                No hay ciclos archivados aún.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-pagos">
+                    <!-- Payments Summary Stats -->
+                    <div class="financial-summary-grid">
+                        <div class="fin-stat-card">
+                            <i class="ri-checkbox-circle-line stat-icon plus"></i>
+                            <span class="stat-label">Total Pagado</span>
+                            <span class="stat-value" id="prof-pay-total">S/. 0.00</span>
+                        </div>
+                        <div class="fin-stat-card">
+                            <i class="ri-error-warning-line stat-icon minus"></i>
+                            <span class="stat-label">Deuda Pendiente</span>
+                            <span class="stat-value text-danger" id="prof-pay-debt">S/. 0.00</span>
+                        </div>
+                        <div class="fin-stat-card">
+                            <i class="ri-hand-coin-line stat-icon"></i>
+                            <span class="stat-label">Total Acumulado</span>
+                            <span class="stat-value" id="prof-pay-accumulated">S/. 0.00</span>
+                        </div>
+                        <div class="fin-stat-card">
+                            <i class="ri-percent-line stat-icon"></i>
+                            <span class="stat-label">Descuentos</span>
+                            <span class="stat-value" id="prof-pay-discounts">S/. 0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Transactions Table -->
+                    <div class="profile-table-container">
+                        <div class="table-header-custom">
+                            <h3><i class="ri-history-line"></i> Historial de Transacciones</h3>
+                        </div>
+                        <table class="data-table compact-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Concepto</th>
+                                    <th>Método</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prof-payments-body">
+                                <!-- Generated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-repertorio">
+                    <div class="empty-tab-state">
+                        <i class="ri-music-2-line"></i>
+                        <p>La sección de Repertorio estará disponible próximamente.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="registrar-alumno-section" class="content-section">
+                <div class="section-header no-title">
+                </div>
+
+                <div class="form-card">
+                    <form id="student-form">
+                        <input type="hidden" id="student-id">
+
+                        <!-- Información Personal -->
+                        <div class="form-section">
+                            <h3><i class="ri-user-3-line"></i> Información Personal</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Primer Nombre *</label>
+                                    <input type="text" id="student-primer-nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Segundo Nombre</label>
+                                    <input type="text" id="student-segundo-nombre">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Primer Apellido *</label>
+                                    <input type="text" id="student-primer-apellido" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Segundo Apellido</label>
+                                    <input type="text" id="student-segundo-apellido">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Sexo *</label>
+                                    <select id="student-sexo" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Edad</label>
+                                    <input type="number" id="student-edad" placeholder="Edad" min="0" max="120">
+                                    <small
+                                        style="color: #888; font-size: 0.75rem; display: block; margin-top: 0.25rem;">Se
+                                        actualiza automáticamente con la fecha de nacimiento</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fecha de Nacimiento <span class="optional-label">(auto-calcula
+                                            edad)</span></label>
+                                    <input type="date" id="student-cumpleanos">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información Académica -->
+                        <div class="form-section">
+                            <h3><i class="ri-book-open-line"></i> Información Académica</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Código de Acceso Intranet *</label>
+                                    <input type="text" id="student-codigo" required placeholder="Ej: LNAP26I">
+                                </div>
+                                <div class="form-group">
+                                    <label>Instrumento *</label>
+                                    <select id="student-instrumento" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Piano">Piano</option>
+                                        <option value="Violín">Violín</option>
+                                        <option value="Guitarra">Guitarra</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nivel (1-6) *</label>
+                                    <select id="student-nivel" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="1">Nivel 1</option>
+                                        <option value="2">Nivel 2</option>
+                                        <option value="3">Nivel 3</option>
+                                        <option value="4">Nivel 4</option>
+                                        <option value="5">Nivel 5</option>
+                                        <option value="6">Nivel 6</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fecha de Registro *</label>
+                                    <input type="date" id="student-fecha-registro" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información de Contacto -->
+                        <div class="form-section">
+                            <h3><i class="ri-map-pin-line"></i> Información de Contacto</h3>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label>Dirección *</label>
+                                    <input type="text" id="student-direccion" required
+                                        placeholder="Ej: Jr. Federico Sánchez Cuadra 8">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label>Referencia</label>
+                                    <input type="text" id="student-referencia" placeholder="Ej: Al costado de Emapa">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información del Apoderado -->
+                        <div class="form-section">
+                            <h3><i class="ri-parent-line"></i> Información del Apoderado</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nombre del Apoderado *</label>
+                                    <input type="text" id="student-apoderado" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tipo de Persona *</label>
+                                    <select id="student-tipo-persona" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="Natural">Persona Natural</option>
+                                        <option value="Jurídica">Persona Jurídica</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label id="doc-label">DNI <span class="optional-label">(opcional)</span></label>
+                                    <input type="text" id="student-dni" maxlength="8" placeholder="8 dígitos">
+                                </div>
+                                <div class="form-group">
+                                    <label>RUC <span id="ruc-required"></span></label>
+                                    <input type="text" id="student-ruc" maxlength="11" placeholder="11 dígitos">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Celular / WhatsApp *</label>
+                                    <input type="tel" id="student-celular" required placeholder="Ej: 942041776"
+                                        maxlength="9">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancel-student-btn">
+                                <i class="ri-close-line"></i> Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ri-save-line"></i> Registrar Alumno
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="lista-alumnos-section" class="content-section">
+                <div class="section-header">
+                    <div class="status-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="ri-group-line"></i> Todos (<span id="count-all">0</span>)
+                        </button>
+                        <button class="filter-btn" data-filter="active">
+                            <i class="ri-checkbox-circle-line"></i> Activos (<span id="count-active">0</span>)
+                        </button>
+                        <button class="filter-btn" data-filter="inactive">
+                            <i class="ri-close-circle-line"></i> Inactivos (<span id="count-inactive">0</span>)
+                        </button>
+                    </div>
+                    <div class="search-box">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="student-search" placeholder="Buscar alumno...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table students-table" id="students-table">
+                        <thead>
+                            <tr>
+                                <th><i class="ri-user-line"></i> Alumno</th>
+                                <th><i class="ri-parent-line"></i> Apoderado</th>
+                                <th><i class="ri-phone-line"></i> Celular</th>
+                                <th><i class="ri-honor-of-kings-line"></i> Nivel</th>
+                                <th><i class="ri-calendar-check-line"></i> Frecuencia</th>
+                                <th><i class="ri-calendar-2-line"></i> Clases</th>
+                                <th><i class="ri-toggle-line"></i> Estado</th>
+                                <th><i class="ri-settings-3-line"></i> Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="cartera-section" class="content-section">
+                <div class="section-header">
+                    <div class="search-box">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="portfolio-search" placeholder="Buscar cliente...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table portfolio-table" id="portfolio-table">
+                        <thead>
+                            <tr>
+                                <th><i class="ri-user-star-line"></i> Alumno</th>
+                                <th><i class="ri-parent-line"></i> Apoderado</th>
+                                <th><i class="ri-phone-line"></i> Celular</th>
+                                <th><i class="ri-calendar-line"></i> Fecha de Registro</th>
+                                <th><i class="ri-money-dollar-circle-line"></i> Deuda Pendiente</th>
+                                <th><i class="ri-checkbox-circle-line"></i> Pago Completo</th>
+                                <th><i class="ri-toggle-line"></i> Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="portfolio-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Registrar Ventas Section -->
+            <section id="ventas-section" class="content-section">
+                <div class="sales-card">
+                    <div class="card-header no-title">
+                    </div>
+
+                    <div class="sales-form">
+                        <!-- Student Selection -->
+                        <div class="form-group">
+                            <label><i class="ri-user-line"></i> Alumno</label>
+                            <select id="sale-student-select" class="form-input">
+                                <option value="">Seleccionar alumno...</option>
+                            </select>
+                            <div id="student-debt-indicator" class="debt-indicator-box" style="display: none;">
+                                <i class="ri-error-warning-line"></i>
+                                <span id="debt-message"></span>
+                            </div>
+                        </div>
+
+                        <!-- Date and Payment Method -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="ri-calendar-line"></i> Fecha</label>
+                                <input type="date" id="sale-date" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="ri-bank-card-line"></i> Método de Pago</label>
+                                <div class="payment-methods">
+                                    <label class="radio-option">
+                                        <input type="radio" name="payment-method" value="Yape" checked>
+                                        <span class="radio-label">Yape</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="payment-method" value="Transferencia">
+                                        <span class="radio-label">Transferencia</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="payment-method" value="Efectivo">
+                                        <span class="radio-label">Efectivo</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sale Items -->
+                        <div class="form-group">
+                            <label><i class="ri-article-line"></i> Ítems de Venta</label>
+                            <div id="sale-items-list" class="sale-items-list">
+                                <!-- Items will be added here dynamically -->
+                            </div>
+                            <div class="add-item-controls">
+                                <select id="item-type-select" class="form-input">
+                                    <option value="">Seleccionar ítem...</option>
+                                    <option value="Matrícula">Matrícula</option>
+                                    <option value="Cuota mensual">Cuota mensual</option>
+                                    <option value="Material de clases">Material de clases</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                                <input type="text" id="item-description" class="form-input"
+                                    placeholder="Descripción (para 'Otros')" style="display: none;">
+                                <input type="number" id="item-amount" class="form-input" placeholder="Monto S/."
+                                    step="0.01" min="0">
+                                <button type="button" id="add-item-btn" class="btn-primary">
+                                    <i class="ri-add-line"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Discount Section -->
+                        <div class="discount-section">
+                            <div class="discount-toggle">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="apply-discount">
+                                    <span>Aplicar descuento</span>
+                                </label>
+                            </div>
+                            <div id="discount-controls" class="discount-controls" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        <select id="discount-type" class="form-input">
+                                            <option value="percentage">Porcentaje (%)</option>
+                                            <option value="fixed">Monto fijo (S/.)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <input type="number" id="discount-value" class="form-input" placeholder="0"
+                                            step="0.01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Summary -->
+                        <div class="total-summary">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="sale-subtotal" class="amount">S/. 0.00</span>
+                            </div>
+                            <div class="summary-row discount-row" style="display: none;">
+                                <span>Descuento:</span>
+                                <span id="sale-discount" class="amount discount">- S/. 0.00</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Total:</span>
+                                <span id="sale-total" class="amount total">S/. 0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Status -->
+                        <div class="form-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="is-debt" value="debt">
+                                <span>Marcar como deuda (pago pendiente)</span>
+                            </label>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="form-actions">
+                            <button type="button" id="save-sale-btn" class="btn-success">
+                                <i class="ri-save-line"></i> Guardar Venta
+                            </button>
+                            <button type="button" id="clear-sale-btn" class="btn-secondary">
+                                <i class="ri-close-line"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pagos y Finanzas Section -->
+            <section id="finanzas-section" class="content-section">
+                <!-- Summary Cards -->
+                <div class="finance-summary">
+                    <div class="summary-card">
+                        <div class="card-icon sales">
+                            <i class="ri-shopping-bag-line"></i>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-label">Total Ventas</span>
+                            <span id="total-sales" class="card-value">S/. 0.00</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon debt">
+                            <i class="ri-error-warning-line"></i>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-label">Deudas Pendientes</span>
+                            <span id="total-debts" class="card-value">S/. 0.00</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon paid">
+                            <i class="ri-checkbox-circle-line"></i>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-label">Pagos Completos</span>
+                            <span id="total-paid" class="card-value">S/. 0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="finance-filters">
+                    <div class="filter-group">
+                        <label><i class="ri-calendar-line"></i> Desde</label>
+                        <input type="date" id="filter-date-from" class="form-input">
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="ri-calendar-line"></i> Hasta</label>
+                        <input type="date" id="filter-date-to" class="form-input">
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="ri-bank-card-line"></i> Método</label>
+                        <select id="filter-payment-method" class="form-input">
+                            <option value="">Todos</option>
+                            <option value="Yape">Yape</option>
+                            <option value="Transferencia">Transferencia</option>
+                            <option value="Efectivo">Efectivo</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="ri-money-dollar-circle-line"></i> Estado</label>
+                        <select id="filter-payment-status" class="form-input">
+                            <option value="">Todos</option>
+                            <option value="paid">Pagado</option>
+                            <option value="debt">Deuda</option>
+                        </select>
+                    </div>
+                    <button type="button" id="apply-filters-btn" class="btn-primary">
+                        <i class="ri-filter-line"></i> Filtrar
+                    </button>
+                    <button type="button" id="clear-filters-btn" class="btn-secondary">
+                        <i class="ri-close-line"></i> Limpiar
+                    </button>
+                </div>
+
+                <!-- Transactions Table -->
+                <div class="finance-card">
+                    <div class="card-header">
+                        <h3><i class="ri-file-list-3-line"></i> Historial de Transacciones</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="finance-table">
+                            <thead>
+                                <tr>
+                                    <th><i class="ri-calendar-line"></i> Fecha</th>
+                                    <th><i class="ri-user-line"></i> Alumno</th>
+                                    <th><i class="ri-article-line"></i> Ítems</th>
+                                    <th><i class="ri-bank-card-line"></i> Método</th>
+                                    <th><i class="ri-money-dollar-circle-line"></i> Total</th>
+                                    <th><i class="ri-toggle-line"></i> Estado</th>
+                                    <th><i class="ri-settings-line"></i> Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-table-body">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buzón Section -->
+            <section id="buzon-section" class="content-section">
+                <div class="inbox-layout">
+                    <!-- Inbox Sidebar (Filters/Actions) -->
+                    <div class="inbox-sidebar">
+                        <button class="btn btn-primary btn-compose" id="open-compose-btn">
+                            <i class="ri-add-line"></i> Nuevo Mensaje
+                        </button>
+                        <div class="inbox-filters">
+                            <button class="inbox-filter-btn" data-filter="received">
+                                <i class="ri-inbox-line"></i> Recibidos
+                                <span class="filter-count" id="count-received">0</span>
+                            </button>
+                            <button class="inbox-filter-btn" data-filter="sent">
+                                <i class="ri-send-plane-line"></i> Enviados
+                            </button>
+                            <button class="inbox-filter-btn active" data-filter="unread">
+                                <i class="ri-mail-unread-line"></i> No leídos
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Message List Area -->
+                    <div class="inbox-content">
+                        <div class="inbox-header">
+                            <h2>Mensajes</h2>
+                            <div class="inbox-search">
+                                <i class="ri-search-line"></i>
+                                <input type="text" id="inbox-search-input" placeholder="Buscar en mensajes...">
+                            </div>
+                        </div>
+                        <div class="message-list" id="message-list-container">
+                            <!-- Messages will be rendered here -->
+                            <div class="empty-state">
+                                <i class="ri-mail-open-line"></i>
+                                <p>Cargando mensajes...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="horarios-section" class="content-section">
+
+                <!-- Schedule Assignment Interface -->
+                <div class="schedule-assignment-card">
+                    <div class="card-header">
+                        <h3><i class="ri-user-add-line"></i> Asignar Horario de Alumno</h3>
+                        <div class="schedule-controls">
+                            <select id="student-selector" class="student-selector">
+                                <option value="">Seleccionar alumno...</option>
+                            </select>
+                            <button class="btn-secondary btn-sm" id="toggle-closed-mode">
+                                <i class="ri-close-circle-line"></i> Marcar Cerrados
+                            </button>
+                            <button class="btn-primary btn-sm" id="save-schedule-btn" style="display: none;">
+                                <i class="ri-save-line"></i> Guardar Horario
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid-container">
+                        <table class="schedule-grid" id="assignment-schedule-grid">
+                            <thead>
+                                <tr>
+                                    <th class="time-header">Horario</th>
+                                    <th><i class="ri-calendar-line"></i> Lunes</th>
+                                    <th><i class="ri-calendar-line"></i> Martes</th>
+                                    <th><i class="ri-calendar-line"></i> Miércoles</th>
+                                    <th><i class="ri-calendar-line"></i> Jueves</th>
+                                    <th><i class="ri-calendar-line"></i> Viernes</th>
+                                    <th><i class="ri-calendar-line"></i> Sábado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="assignment-schedule-body">
+                                <!-- Will be generated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="schedule-legend">
+                        <div class="legend-item">
+                            <span class="legend-box available"></span>
+                            <span>Disponible</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-box assigned"></span>
+                            <span>Asignado a alumno seleccionado</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-box occupied"></span>
+                            <span>Ocupado por otro(s) alumno(s)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-box closed"></span>
+                            <span>Cerrado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Visualization -->
+                <div class="schedule-visualization-card">
+                    <div class="card-header">
+                        <h3><i class="ri-table-line"></i> Visualización de Horarios</h3>
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" data-view="admin">
+                                <i class="ri-admin-line"></i> Vista Admin
+                            </button>
+                            <button class="toggle-btn" data-view="client">
+                                <i class="ri-eye-line"></i> Vista Cliente
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid-container">
+                        <table class="schedule-grid visualization-grid" id="visualization-schedule-grid">
+                            <thead>
+                                <tr>
+                                    <th class="time-header">Horario</th>
+                                    <th><i class="ri-calendar-line"></i> Lunes</th>
+                                    <th><i class="ri-calendar-line"></i> Martes</th>
+                                    <th><i class="ri-calendar-line"></i> Miércoles</th>
+                                    <th><i class="ri-calendar-line"></i> Jueves</th>
+                                    <th><i class="ri-calendar-line"></i> Viernes</th>
+                                    <th><i class="ri-calendar-line"></i> Sábado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="visualization-schedule-body">
+                                <!-- Will be generated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="repertorios-section" class="content-section">
+                <h2>Repertorios</h2>
+                <p>Esta sección estará disponible próximamente.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Staff Modal -->
+    <div id="staff-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="staff-modal-close">&times;</span>
+            <div class="modal-header">
+                <h2 id="staff-modal-title">Agregar Personal</h2>
+            </div>
+            <div class="modal-body">
+                <form id="staff-form">
+                    <input type="hidden" id="staff-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Primer Nombre *</label>
+                            <input type="text" id="primer-nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Segundo Nombre</label>
+                            <input type="text" id="segundo-nombre">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Primer Apellido *</label>
+                            <input type="text" id="primer-apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Segundo Apellido</label>
+                            <input type="text" id="segundo-apellido">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Sexo *</label>
+                            <select id="sexo" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Cumpleaños *</label>
+                            <input type="date" id="cumpleanos" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Área *</label>
+                            <input type="text" id="area" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo *</label>
+                            <input type="text" id="cargo" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Código de Acceso *</label>
+                            <input type="text" id="codigo-acceso" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nivel de Acceso *</label>
+                            <select id="nivel-acceso" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="Total">Total</option>
+                                <option value="Limitado">Limitado</option>
+                                <option value="Solo Lectura">Solo Lectura</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-staff-btn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compose Message Modal -->
+    <div id="compose-modal" class="modal">
+        <div class="modal-content compose-modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-edit-line"></i> Redactar Mensaje</h3>
+                <button class="close-modal" id="close-compose-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="compose-form">
+                    <div class="form-group">
+                        <label for="message-to">Para:</label>
+                        <div class="recipient-selector-container">
+                            <div class="search-quick-actions">
+                                <button type="button" class="btn-quick-list" id="list-staff-btn">
+                                    <i class="ri-team-line"></i> Ver Personal
+                                </button>
+                                <button type="button" class="btn-quick-list" id="list-students-btn">
+                                    <i class="ri-group-line"></i> Ver Alumnos
+                                </button>
+                            </div>
+                            <div class="search-input-wrapper">
+                                <i class="ri-search-line"></i>
+                                <input type="text" id="recipient-search"
+                                    placeholder="Buscar por nombre, código o inicial..." autocomplete="off">
+                            </div>
+                            <input type="hidden" id="recipient-id">
+                            <input type="hidden" id="recipient-type">
+                            <div id="recipient-results" class="search-results-dropdown"></div>
+                        </div>
+                        <div id="selected-recipient-tag" class="selected-tag" style="display: none;">
+                            <span class="tag-text"></span>
+                            <button type="button" class="remove-tag">&times;</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-subject">Asunto:</label>
+                        <input type="text" id="message-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-body">Mensaje:</label>
+                        <textarea id="message-body" rows="8" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-compose">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="send-message-btn">
+                            <i class="ri-send-plane-fill"></i> Enviar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Message Modal -->
+    <div id="view-message-modal" class="modal">
+        <div class="modal-content view-message-content">
+            <div class="modal-header">
+                <h3><i class="ri-mail-open-line"></i> Mensaje</h3>
+                <button class="close-modal" id="close-view-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="message-view-header">
+                    <div class="view-header-top">
+                        <h2 id="view-subject">Asunto del mensaje</h2>
+                        <span id="view-date" class="message-date">Fecha</span>
+                    </div>
+                    <div class="view-sender-info">
+                        <div class="sender-avatar" id="view-sender-avatar">A</div>
+                        <div class="sender-details">
+                            <div class="sender-name" id="view-sender-name">Nombre del Remitente</div>
+                            <div class="sender-to">Para: <span id="view-recipient-name">Mí</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-view-body" id="view-body">
+                    <!-- Message content goes here -->
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="close-view-btn">Cerrar</button>
+                    <button type="button" class="btn btn-danger" id="delete-message-btn">
+                        <i class="ri-delete-bin-line"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="students.js"></script>
+    <script src="sales.js"></script>
+    <script src="finance.js"></script>
+    <script src="schedules.js"></script>
+    <!-- Attendance Action Modal -->
+    <div id="attendance-modal" class="modal">
+        <div class="modal-content modal-mini">
+            <div class="modal-header">
+                <h3 id="att-modal-title">Marcar Asistencia</h3>
+                <span class="close-modal" onclick="closeAttendanceModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="att-options">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <button class="btn-att-opt present" onclick="setAttendanceStatus('present_simple')">
+                            <i class="ri-check-line"></i> Asistió (Clase Normal)
+                        </button>
+                        <button class="btn-att-opt present" onclick="setAttendanceStatus('present_extra')"
+                            style="border-color: #4CAF50; color: #4CAF50;">
+                            <i class="ri-add-line"></i> Asistió + Recup.
+                        </button>
+                    </div>
+                    <button class="btn-att-opt missing" onclick="setAttendanceStatus('missing')">
+                        <i class="ri-close-line"></i> Faltó
+                    </button>
+                    <button class="btn-att-opt recovery" onclick="setAttendanceStatus('recovery_only')">
+                        <i class="ri-history-line"></i> Recuperación (Sesión Especial)
+                    </button>
+                    <button class="btn-att-opt" onclick="setAttendanceStatus('pending')"
+                        style="margin-top: 1rem; border-color: #eee; color: #999;">
+                        <i class="ri-eraser-line"></i> Quitar Marcado / Pendiente
+                    </button>
+                </div>
+
+                <div id="recovery-details-section" class="recovery-form" style="display: none;">
+                    <label>Añadir minutos extra de recuperación:</label>
+                    <div class="recovery-input-group">
+                        <input type="number" id="recovery-minutes" placeholder="Ej: 30" class="input-minimal">
+                        <span>min</span>
+                    </div>
+
+                    <div class="mt-1">
+                        <label>Fecha de recuperación:</label>
+                        <input type="date" id="recovery-date" class="input-minimal full-width">
+                    </div>
+
+                    <div class="mt-1">
+                        <label>Hora de recuperación:</label>
+                        <input type="time" id="recovery-time" class="input-minimal full-width">
+                    </div>
+
+                    <div class="mt-1">
+                        <label>Tipo de horario:</label>
+                        <select id="recovery-schedule-type" class="input-minimal full-width">
+                            <option value="habitual">Horario Habitual</option>
+                            <option value="especial">Horario Especial</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-capsule primary full-width mt-1" onclick="saveAttendanceWithRecovery()">
+                        Confirmar Asistencia + Recuperación
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jspdf for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="profile.js"></script>
+    <script src="inbox.js"></script>
+    <script src="admin.js"></script>
+    <!-- Dedicated Grading Modals -->
+    <!-- Quick Task Grade Modal removed -->
+
+    <!-- Exam Grade Modal (Syllabus Link) -->
+    <div id="exam-grade-modal" class="mini-modal" style="display: none; z-index: 3050;">
+        <div class="mini-modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-medal-line"></i> Nota de Examen</h3>
+                <button class="close-modal" onclick="closeExamGradeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="exam-student-id">
+                <input type="hidden" id="grade-exam-mod-id">
+                <input type="hidden" id="grade-exam-topic-idx">
+
+                <div id="exam-grade-display-box"
+                    style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px; margin-bottom: 1rem;">
+                    <span style="display: block; color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem;">NOTA
+                        ACTUAL</span>
+                    <div id="exam-grade-current" class="grade-circle-large" style="margin: 0 auto;">-</div>
+                </div>
+
+                <div class="info-box" style="font-size: 0.85rem; color: #666; margin-bottom: 1rem;">
+                    <i class="ri-information-line"></i>
+                    Las notas de exámenes se gestionan a través del sistema de <b>Evaluaciones</b> para mantener un
+                    registro detallado de los rubros evaluados.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary full-width" onclick="closeExamGradeModal()">Cerrar</button>
+                <button class="btn-primary full-width" onclick="goToExamGradesTab()">Ir a Evaluaciones</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="task-rubric-modal" class="modal" style="display: none; z-index: 3100;">
+        <div class="modal-content" style="max-width: 1000px;">
+            <div class="modal-header">
+                <h3><i class="ri-list-check-2"></i> Rúbrica de Tarea</h3>
+                <span class="close-modal" onclick="closeTaskRubricModal()">&times;</span>
+            </div>
+            <div class="modal-body" style="padding: 2rem; max-height: 70vh; overflow-y: auto;">
+                <input type="hidden" id="rubric-student-id">
+                <input type="hidden" id="rubric-task-idx">
+                <input type="hidden" id="rubric-subtask-idx" value="">
+
+                <div class="rubric-builder">
+                    <div id="rubric-items-container" class="rubric-grid-container">
+                        <!-- Dynamic categories will go here -->
+                    </div>
+
+                    <button class="btn-rubric-add-cat" onclick="addNewRubricCategory()">
+                        <i class="ri-play-list-add-line"></i> Agregar Nueva Categoría
+                    </button>
+                </div>
+
+                <div class="rubric-total-box">
+                    <span class="rubric-total-label">Nota Promedio (0-20):</span>
+                    <span id="rubric-total-score" class="rubric-total-val">0.00</span>
+                </div>
+            </div>
+            <div class="modal-footer"
+                style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: #f8fafc; border-top: 1px solid #e2e8f0; border-radius: 0 0 16px 16px;">
+                <button class="btn-premium-danger" id="clear-rubric-btn" onclick="clearSubtaskGrade()"
+                    style="display: none;">
+                    <i class="ri-delete-bin-line"></i> Limpiar Nota
+                </button>
+                <div style="display: flex; gap: 1rem; margin-left: auto;">
+                    <button class="btn-premium-secondary" onclick="closeTaskRubricModal()">Cancelar</button>
+                    <button class="btn-premium-primary" onclick="saveTaskRubricGrade()">Guardar Calificación</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subtask Form Modal -->
+    <div id="subtask-form-modal" class="mini-modal centered" style="display: none;">
+        <div class="mini-modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="subtask-modal-title"><i class="ri-add-line"></i> Nueva Subtarea</h3>
+                <button class="close-modal" onclick="closeSubtaskForm()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="subtask-student-id" value="">
+                <input type="hidden" id="subtask-edit-index" value="">
+                <div class="form-group-minimal">
+                    <label>Título de la Subtarea</label>
+                    <input type="text" id="subtask-title" placeholder="Ej: Escalar en Do Mayor">
+                </div>
+                <div class="form-group-minimal">
+                    <label>Descripción / Instrucciones</label>
+                    <textarea id="subtask-description" rows="3"
+                        placeholder="Detalles de lo que el alumno debe hacer..."></textarea>
+                </div>
+                <div class="form-group-minimal">
+                    <label>Vincular Canción del Módulo (Opcional)</label>
+                    <select id="subtask-song-link"
+                        style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="">-- Sin canción vinculada --</option>
+                    </select>
+                </div>
+                <div class="form-row-minimal">
+                    <div class="form-group-minimal" style="width: 100%;">
+                        <label>Link de Video (Opcional)</label>
+                        <input type="text" id="subtask-video" placeholder="Link YouTube/Drive">
+                    </div>
+                </div>
+
+                <div class="form-group-minimal" style="margin-top: 1rem;">
+                    <label>Imágenes de Referencia</label>
+                    <div id="subtask-images-preview"
+                        style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                        <!-- Thumbs -->
+                    </div>
+                    <button class="btn-secondary btn-sm full-width" onclick="triggerSubtaskImageUpload()">
+                        <i class="ri-image-add-line"></i> Subir Imagen
+                    </button>
+                    <input type="file" id="subtask-image-input" accept="image/*" style="display: none;"
+                        onchange="handleSubtaskImageUpload(this)">
+                </div>
+            </div>
+            <div class="mini-modal-actions">
+                <button class="btn-secondary btn-sm" onclick="closeSubtaskForm()">Cancelar</button>
+                <button class="btn-primary btn-sm" onclick="saveSubtask()">Guardar Subtarea</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtask View Modal (Student View Simulation) -->
+    <div id="subtask-view-modal" class="mini-modal centered" style="display: none;">
+        <div class="mini-modal-content" style="max-width: 650px; border-radius: 16px;">
+            <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                <h3 id="view-subtask-title" style="font-size: 1.5rem; color: var(--secondary-color);">-</h3>
+                <button class="close-modal" onclick="closeSubtaskView()">&times;</button>
+            </div>
+            <div class="modal-body" style="padding-top: 5px;">
+                <div id="view-subtask-grade-pill" style="margin-bottom: 1rem;">
+                    <!-- Grade badge will go here -->
+                </div>
+                <div id="view-subtask-song-link" style="margin-bottom: 1rem; display: none;">
+                    <!-- Linked Song will go here -->
+                </div>
+
+                <p id="view-subtask-description"
+                    style="white-space: pre-wrap; color: #475569; line-height: 1.6; margin-bottom: 1.5rem;">-</p>
+
+                <div id="view-subtask-media" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div id="view-subtask-video-container"></div>
+                    <div id="view-subtask-images-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    </div>
+                </div>
+            </div>
+            <div class="mini-modal-actions" style="border-top: none; padding-top: 0;">
+                <button class="btn-secondary btn-sm" onclick="closeSubtaskView()">Cerrar Vista</button>
+            </div>
+        </div>
+    </div>
+    <!-- GLOBAL MODALS -->
+    <div id="grading-report-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-file-chart-line"></i> Reporte Detallado de Evaluación</h3>
+                <button class="close-modal"
+                    onclick="document.getElementById('grading-report-modal').classList.remove('active')">&times;</button>
+            </div>
+            <div id="grading-report-render-area" class="modal-body report-container-inner">
+                <!-- Generated by JS -->
+            </div>
+            <div class="modal-footer"
+                style="padding: 1.5rem; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 1rem;">
+                <button class="btn-primary" onclick="window.printReport()">
+                    <i class="ri-printer-line"></i> Imprimir Reporte (PDF)
+                </button>
+                <button class="btn-secondary"
+                    onclick="document.getElementById('grading-report-modal').classList.remove('active')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
