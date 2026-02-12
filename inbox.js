@@ -377,35 +377,9 @@ function filterInboxDisplay(query) {
     renderMessageList(filtered);
 }
 
-// Add some demo data if empty
+// Initialize inboxMessages if not exists
 if (!localStorage.getItem('inboxMessages')) {
-    const demoMessages = [
-        {
-            id: Date.now() - 86400000,
-            from: "Amy Pérez",
-            fromId: 1,
-            to: "Administrador",
-            toId: "admin",
-            subject: "Consulta sobre pagos",
-            body: "Hola, quisiera saber si mi pago de este mes ya fue procesado correctamente. Gracias.",
-            timestamp: new Date(Date.now() - 86400000).toISOString(),
-            isRead: false,
-            type: "received"
-        },
-        {
-            id: Date.now() - 43200000,
-            from: "Mariella Castro",
-            fromId: 2,
-            to: "Administrador",
-            toId: "admin",
-            subject: "Nueva solicitud de partitura",
-            body: "Profesor, el alumno Amy está solicitando la partitura de Para Elisa para su próxima clase.",
-            timestamp: new Date(Date.now() - 43200000).toISOString(),
-            isRead: false,
-            type: "received"
-        }
-    ];
-    localStorage.setItem('inboxMessages', JSON.stringify(demoMessages));
+    localStorage.setItem('inboxMessages', JSON.stringify([]));
 }
 
 // Initialize on script load

@@ -368,30 +368,18 @@ window.deleteStaff = function (id) {
 
 // Save backup
 function saveBackup() {
-    const backupData = {
-        version: '2.1',
-        timestamp: new Date().toISOString(),
-        data: {
-            staffData: JSON.parse(localStorage.getItem('staffData') || '[]'),
-            studentsData: JSON.parse(localStorage.getItem('studentsData') || '[]'),
-            scheduleData: JSON.parse(localStorage.getItem('scheduleData') || '{}'),
-            salesTransactions: JSON.parse(localStorage.getItem('salesTransactions') || '[]'),
-            portfolioSummary: JSON.parse(localStorage.getItem('portfolioSummary') || '{}'),
-            // Include Syllabus Data
-            syllabusMaster: {},
-            syllabusProgress: {}
-        }
-    };
-
-    // Collect all master and progress syllabus keys
+    // Collect EVERYTHING from localStorage
+    const allStore = {};
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key.startsWith('master_syllabus_')) {
-            backupData.data.syllabusMaster[key] = JSON.parse(localStorage.getItem(key));
-        } else if (key.startsWith('student_progress_syllabus_')) {
-            backupData.data.syllabusProgress[key] = JSON.parse(localStorage.getItem(key));
-        }
+        allStore[key] = localStorage.getItem(key);
     }
+
+    const backupData = {
+        version: '3.0 (Total)',
+        timestamp: new Date().toISOString(),
+        data: allStore
+    };
 
     const dataStr = JSON.stringify(backupData, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -399,13 +387,13 @@ function saveBackup() {
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = `casa-pianista-backup-${new Date().toISOString().split('T')[0]}.json`;
+    link.download = `casa-pianista-TOTAL-backup-${new Date().toISOString().split('T')[0]}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    alert('✅ Copia de seguridad guardada exitosamente (Incluyendo Sílabos)');
+    alert('✅ ¡COPIA TOTAL COMPLETADA!\n\nSe han respaldado absolutamente todos los datos: Alumnos, Asistencias, Calificaciones, Sílabos, Mensajes y Finanzas.');
 }
 
 // Restore backup
@@ -420,33 +408,43 @@ function restoreBackup(file) {
                 throw new Error('Formato de backup inválido');
             }
 
-            if (!confirm('⚠️ Esto sobrescribirá todos los datos actuales. ¿Deseas continuar?')) {
+            if (!confirm('⚠️ ADVERTENCIA CRÍTICA\n\nEsto reemplazará TODOS los datos actuales con los del archivo. ¿Deseas continuar?')) {
                 return;
             }
 
-            // Restore basic core data
-            const keysToRestore = ['staffData', 'studentsData', 'scheduleData', 'salesTransactions', 'portfolioSummary'];
-            keysToRestore.forEach(key => {
-                if (backup.data[key]) {
-                    localStorage.setItem(key, JSON.stringify(backup.data[key]));
+            // Perform restoration
+            if (backup.version && backup.version.includes('Total')) {
+                // UNIVERSAL RESTORE (Version 3.0+)
+                localStorage.clear();
+                Object.entries(backup.data).forEach(([key, value]) => {
+                    localStorage.setItem(key, value);
+                });
+            } else {
+                // LEGACY RESTORE (Version 2.x and below)
+                // Restore basic core data
+                const keysToRestore = ['staffData', 'studentsData', 'scheduleData', 'salesTransactions', 'portfolioSummary', 'inboxMessages'];
+                keysToRestore.forEach(key => {
+                    if (backup.data[key]) {
+                        localStorage.setItem(key, JSON.stringify(backup.data[key]));
+                    }
+                });
+
+                // Restore Master Syllabus Data
+                if (backup.data.syllabusMaster) {
+                    Object.keys(backup.data.syllabusMaster).forEach(key => {
+                        localStorage.setItem(key, JSON.stringify(backup.data.syllabusMaster[key]));
+                    });
                 }
-            });
 
-            // Restore Master Syllabus Data
-            if (backup.data.syllabusMaster) {
-                Object.keys(backup.data.syllabusMaster).forEach(key => {
-                    localStorage.setItem(key, JSON.stringify(backup.data.syllabusMaster[key]));
-                });
+                // Restore Progress Syllabus Data
+                if (backup.data.syllabusProgress) {
+                    Object.keys(backup.data.syllabusProgress).forEach(key => {
+                        localStorage.setItem(key, JSON.stringify(backup.data.syllabusProgress[key]));
+                    });
+                }
             }
 
-            // Restore Progress Syllabus Data
-            if (backup.data.syllabusProgress) {
-                Object.keys(backup.data.syllabusProgress).forEach(key => {
-                    localStorage.setItem(key, JSON.stringify(backup.data.syllabusProgress[key]));
-                });
-            }
-
-            alert('✅ Copia de seguridad restaurada exitosamente. La página se recargará.');
+            alert('✅ Restauración COMPLETA exitosa. El sistema se reiniciará con los nuevos datos.');
             location.reload();
         } catch (error) {
             alert('❌ Error al restaurar el backup: ' + error.message);

@@ -59,36 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeStudentData() {
     const existing = localStorage.getItem('studentsData');
-    if (!existing || JSON.parse(existing).length === 0) {
-        const defaultStudents = [
-            {
-                id: 1,
-                primerNombre: 'Liam',
-                segundoNombre: 'Nicolás',
-                primerApellido: 'Padilla',
-                segundoApellido: 'Saldaña',
-                codigoAcceso: 'LNAP26I',
-                instrumento: 'Piano',
-                nivel: '2',
-                sexo: 'Masculino',
-                edad: 9,
-                cumpleanos: '2015-05-15',
-                fechaRegistro: '2024-01-10',
-                direccion: 'Jr. Federico Sánchez Cuadra 8',
-                referencia: 'Al costado de Emapa',
-                apoderado: 'María Padilla',
-                celular: '942041776',
-                tipoPersona: 'Natural',
-                activo: true,
-                status: 'active',
-                clasesRecibidas: 12,
-                clasesSemanales: 2,
-                calificacion: 18,
-                dni: '',
-                ruc: ''
-            }
-        ];
-        localStorage.setItem('studentsData', JSON.stringify(defaultStudents));
+    if (!existing) {
+        localStorage.setItem('studentsData', JSON.stringify([]));
     }
 }
 
