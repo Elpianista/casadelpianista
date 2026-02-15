@@ -743,6 +743,78 @@ h4 {
     }
 }
 
+/* ==========================================================================
+   STATE: Under Construction
+   ========================================================================== */
+.under-construction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    height: 100%;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.uc-lottie {
+    margin-bottom: 0rem;
+}
+
+.uc-text {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    max-width: 600px;
+    margin-top: -40px;
+    line-height: 1.4;
+}
+
+/* Specific adjustments for empty sections to ensure full height centering */
+#repertorios-section,
+#tab-repertorio {
+    display: flex;
+    /* Flex to center the container within the section if needed, but container is self-centered */
+    flex-direction: column;
+    justify-content: center;
+}
+
+#repertorios-section {
+    min-height: calc(100vh - 120px);
+}
+
+/* ==========================================
+   LOTTIE PRELOADER STYLES
+   ========================================== */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    overflow: hidden;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#preloader dotlottie-wc {
+    /* Filter to transform to #f6b000 (Brand Color) */
+    filter: brightness(0) saturate(100%) invert(67%) sepia(65%) saturate(1458%) hue-rotate(1deg) brightness(103%) contrast(103%) drop-shadow(0 15px 40px rgba(0, 0, 0, 0.1));
+}
+
 /* Student Form Styles */
 .form-card {
     background: white;
@@ -6380,12 +6452,14 @@ input:checked+.toggle-slider:before {
     font-size: 2rem;
     font-weight: 900;
 }
+
 /* ==================== MOBILE OPTIMIZATION OVERRIDES ==================== */
 
 @media (max-width: 768px) {
+
     /* Modals */
-    .wide-modal, 
-    .mini-modal, 
+    .wide-modal,
+    .mini-modal,
     #grading-report-modal .modal-content,
     .modal-content {
         width: 95% !important;
@@ -6398,23 +6472,26 @@ input:checked+.toggle-slider:before {
 
     /* Rúbrica overrides */
     .rubric-grid-container {
-        grid-template-columns: 1fr !important; /* Stack categories */
+        grid-template-columns: 1fr !important;
+        /* Stack categories */
     }
 
     /* Table Scrolling */
     .table-container,
-    .finance-card, 
+    .finance-card,
     .info-card {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
     }
 
     table {
-        min-width: 600px; /* Force scroll instead of crushing columns */
+        min-width: 600px;
+        /* Force scroll instead of crushing columns */
     }
 
     /* Form Rows */
-    .form-row, .info-grid {
+    .form-row,
+    .info-grid {
         grid-template-columns: 1fr !important;
     }
 
@@ -6443,8 +6520,9 @@ input:checked+.toggle-slider:before {
         height: auto !important;
         padding: 1rem !important;
     }
-    
-    .header-left-box, .header-right-box {
+
+    .header-left-box,
+    .header-right-box {
         width: 100% !important;
         text-align: center !important;
         justify-content: center !important;
@@ -6466,6 +6544,976 @@ input:checked+.toggle-slider:before {
     }
 
     .banner-center {
-        order: -1; /* Medal on top */
+        order: -1;
+        /* Medal on top */
     }
+}
+
+/* Selector UI Improvements */
+.song-pill-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.song-pill-check:hover {
+    background: #f8fafc;
+}
+
+.song-pill-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.song-type-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-famous {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-practice {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.badge-external {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-subtask {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.subtask-group-header {
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    color: #1e293b;
+    background: #f8fafc;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.subtask-group-header:first-child {
+    margin-top: 0;
+    border-top: none;
+}
+
+.song-pill-check.selected {
+    background: rgba(246, 176, 0, 0.05);
+}
+
+/* ========================================
+   STUDENT PROFILE SUMMARY DASHBOARD
+   ======================================== */
+
+.summary-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Main Grade Card */
+.summary-card.main-grade-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-grade-card.grade-ad {
+    border-top: 5px solid #0ea5e9;
+}
+
+.main-grade-card.grade-aplus,
+.main-grade-card.grade-a {
+    border-top: 5px solid #10b981;
+}
+
+.main-grade-card.grade-b {
+    border-top: 5px solid #f59e0b;
+}
+
+.main-grade-card.grade-c {
+    border-top: 5px solid #ef4444;
+}
+
+.main-grade-card .grade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-grade-card h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.performance-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.grade-ad .performance-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.grade-aplus .performance-tag,
+.grade-a .performance-tag {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.grade-b .performance-tag {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.grade-c .performance-tag {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.grade-body {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 1rem 0;
+}
+
+.grade-medal-container {
+    flex-shrink: 0;
+}
+
+.grade-info {
+    flex: 1;
+}
+
+.average-val {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+}
+
+.average-val .base {
+    font-size: 1.5rem;
+    color: #94a3b8;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+.average-label {
+    margin: 0.5rem 0 0;
+    color: #64748b;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.grade-footer {
+    display: flex;
+    gap: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.stat-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-mini .label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.stat-mini .val {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #334155;
+}
+
+/* Medal Overrides for Dashboard */
+.grade-ad .banner-medal::before {
+    background: conic-gradient(rgba(255, 255, 255, 0.45) var(--perc), #0284c7 100%) !important;
+}
+
+.grade-aplus .banner-medal::before,
+.grade-a .banner-medal::before {
+    background: conic-gradient(rgba(255, 255, 255, 0.45) var(--perc), #059669 100%) !important;
+}
+
+.grade-b .banner-medal::before {
+    background: conic-gradient(rgba(255, 255, 255, 0.45) var(--perc), #d97706 100%) !important;
+}
+
+.grade-c .banner-medal::before {
+    background: conic-gradient(rgba(255, 255, 255, 0.45) var(--perc), #dc2626 100%) !important;
+}
+
+/* Stats Grid Cards */
+.summary-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.stat-icon.topic {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.stat-icon.task {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
+.stat-icon.attendance {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.stat-icon.finance {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.stat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-card .label {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.stat-card .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+}
+
+.stat-card .val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.stat-card .perc {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.progress-bar-mini {
+    width: 100%;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-mini .fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.stat-card .sub-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* Finance Row in Card */
+.finance-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 5px;
+}
+
+.fin-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.fin-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.fin-val {
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.fin-val.paid {
+    color: #10b981;
+}
+
+.fin-val.debt {
+    color: #ef4444;
+}
+
+/* Info Grid Premium */
+.summary-info-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+}
+
+.info-header h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.info-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.info-box label {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+@media (max-width: 600px) {
+    .grade-body {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .grade-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .average-val {
+        justify-content: center;
+    }
+
+    .finance-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ========================================
+   REFINED SUMMARY DASHBOARD EXTENSIONS
+   ======================================== */
+
+.summary-view-selectors {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-view-opt {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-view-opt:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #334155;
+}
+
+.btn-view-opt.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(246, 176, 0, 0.2);
+}
+
+.sub-averages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.sub-avg-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sub-avg-item .sub-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.sub-avg-item .sub-val {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1e293b;
+}
+
+.repertoire-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.rep-pill {
+    background: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+}
+
+.rep-pill.external {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.rep-mod-tag {
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 900;
+}
+
+.rep-genre {
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.empty-note {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Custom Picker Modal Styles */
+.custom-picker-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    animation: fadeIn 0.3s ease;
+}
+
+.picker-modal {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.picker-modal h4 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    text-align: center;
+}
+
+.picker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.picker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.picker-item:has(input:checked) {
+    background: #fff;
+    border-color: var(--primary-color);
+}
+
+.picker-item input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.picker-item span {
+    font-weight: 700;
+    color: #475569;
+}
+
+.picker-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.picker-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    border: none;
+    color: #64748b;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+}
+
+/* ==========================================
+   INSTRUMENT THEMES & PERSONAL INFO EXPANSION
+   ========================================== */
+
+/* Base container for theming */
+#perfil-alumno-section {
+    --theme-accent: var(--primary-color);
+    --theme-bg-soft: #fff9e6;
+    --theme-icon-color: var(--primary-color);
+}
+
+/* Piano Theme: Elegant Black & Gold */
+#perfil-alumno-section.theme-piano {
+    --theme-accent: #111827;
+    /* Dark Slate / Black */
+    --theme-bg-soft: #f3f4f6;
+    --theme-icon-color: #f6b000;
+}
+
+/* Guitarra Theme: Warm Wood / Orange */
+#perfil-alumno-section.theme-guitarra {
+    --theme-accent: #b45309;
+    /* Amber / Brown */
+    --theme-bg-soft: #fff7ed;
+    --theme-icon-color: #f97316;
+}
+
+/* ViolÃ­n Theme: Classic Burgundy / Rose */
+#perfil-alumno-section.theme-violin {
+    --theme-accent: #9f1239;
+    /* Rose / Deep Red */
+    --theme-bg-soft: #fff1f2;
+    --theme-icon-color: #e11d48;
+}
+
+/* Apply themes to accents */
+#perfil-alumno-section[class*="theme-"] .profile-tab-btn.active {
+    color: var(--theme-accent);
+    border-bottom: 2px solid var(--theme-accent);
+}
+
+#perfil-alumno-section[class*="theme-"] .profile-avatar-large {
+    background: var(--theme-accent);
+}
+
+#perfil-alumno-section[class*="theme-"] .btn-back {
+    color: var(--theme-accent);
+}
+
+/* Detailed Personal Info Tab */
+.personal-info-detailed {
+    animation: fadeIn 0.4s ease;
+}
+
+.detailed-info-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.detailed-info-header {
+    background: var(--theme-bg-soft);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.instrument-bg-icon {
+    font-size: 5rem;
+    color: var(--theme-icon-color);
+    opacity: 0.2;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-text h3 {
+    font-size: 1.8rem;
+    color: var(--theme-accent);
+    margin-bottom: 0.3rem;
+    margin-top: 0;
+}
+
+.header-text p {
+    color: #64748b;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.detailed-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+
+.info-group h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-group h4 i {
+    color: var(--theme-accent);
+    font-size: 1.1rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.info-row p {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   STATE: Under Construction
+   ========================================================================== */
+.under-construction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    height: 100%;
+    text-align: center;
+    padding: 2rem;
+    padding-bottom: 30vh;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.uc-lottie {
+    margin-bottom: 0rem;
+    width: 100%;
+}
+
+.uc-text {
+    font-family: 'Outfit', sans-serif;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    font-weight: 500;
+    max-width: 500px;
+    margin-top: 0;
+    line-height: 1.5;
+}
+
+/* Specific adjustments for empty sections to ensure full height centering */
+#repertorios-section,
+#tab-repertorio {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#repertorios-section.active,
+#tab-repertorio.active {
+    display: flex;
+}
+
+#repertorios-section {
+    min-height: calc(100vh - 120px);
+}
+
+.lottie-wrapper {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0rem;
+}
+
+/* Summary Grade Card Styles - No Grades State */
+.summary-card.grade-null {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    border-left-color: #9ca3af;
+}
+
+.summary-card.grade-null .performance-tag {
+    background: #e5e7eb;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.placeholder-medal {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 4px solid #e5e7eb;
+}
+
+/* Existing Grade Colors override for consistency if needed */
+.grade-ad {
+    border-left-color: var(--primary-color);
+}
+
+.grade-aplus {
+    border-left-color: #3b82f6;
+}
+
+.grade-a {
+    border-left-color: #10b981;
+}
+
+.grade-b {
+    border-left-color: #f59e0b;
+}
+
+.grade-c {
+    border-left-color: #ef4444;
+}
+
+
+/* Status Toggle Switch Styles */
+.status-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+.status-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    /* Inactive: Black Background */
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    /* Inactive: White Circle */
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Active State: Green Background, Black Circle */
+.status-toggle input:checked+.toggle-slider {
+    background-color: #10b981;
+    /* Green Background */
+}
+
+.status-toggle input:checked+.toggle-slider:before {
+    transform: translateX(20px);
+    background-color: #000000;
+    /* Black Circle */
 }

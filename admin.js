@@ -453,3 +453,13 @@ function restoreBackup(file) {
 
     reader.readAsText(file);
 }
+
+// Lottie Preloader Hiding Logic
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+        }, 800); // 800ms delay for a better visual experience
+    }
+});

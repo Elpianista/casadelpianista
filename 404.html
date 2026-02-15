@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada - Casa del Pianista</title>
+    <link rel="stylesheet" href="admin.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body.error-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .error-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 0.8s ease;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+        }
+
+        .btn-home {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(246, 176, 0, 0.25);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(246, 176, 0, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="error-page">
+    <img src="404-error.jpg" alt="Error 404 - Página no encontrada" class="error-image">
+    <a href="index.html" class="btn-home">Regresar al Inicio</a>
+</body>
+
+</html>

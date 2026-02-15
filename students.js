@@ -66,7 +66,7 @@ function initializeStudentData() {
 
 let currentStudentFilter = 'all';
 
-window.loadStudentsTable = function (filter = 'all') {
+window.loadStudentsTable = function (filter = 'active') {
     const studentsData = JSON.parse(localStorage.getItem('studentsData') || '[]');
     const tbody = document.getElementById('students-table-body');
     if (!tbody) return;

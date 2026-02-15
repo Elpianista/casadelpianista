@@ -10,9 +10,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
         rel="stylesheet">
+    <!-- Lottie Preloader Script -->
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <dotlottie-wc src="https://lottie.host/a7639e8b-1828-4034-a5db-4d0cf0129865/bPtxlBGHbj.lottie"
+            style="width: 300px; height: 300px" autoplay loop></dotlottie-wc>
+    </div>
+
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -209,6 +217,7 @@
 
                 <div class="profile-tabs">
                     <button class="profile-tab-btn active" data-tab="resumen">Resumen</button>
+                    <button class="profile-tab-btn" data-tab="info">Info</button>
                     <button class="profile-tab-btn" data-tab="silabos">Sílabos</button>
                     <button class="profile-tab-btn" data-tab="calificacion">Calificación</button>
                     <button class="profile-tab-btn" data-tab="asignacion">Asignación</button>
@@ -218,67 +227,98 @@
                 </div>
 
                 <div class="tab-content active" id="tab-resumen">
-                    <div class="profile-grid">
-                        <div class="info-card">
-                            <h3><i class="ri-user-line"></i> Información Personal</h3>
-                            <div class="info-grid">
-                                <div class="info-item">
-                                    <label>Nombres Completos</label>
-                                    <p id="info-full-name">-</p>
+                    <!-- Resumen content will be managed here, potentially simplified if details move to Info -->
+                    <div id="comprehensive-summary-container">
+                        <!-- Redesigned summary dashboard content -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-info">
+                    <div class="personal-info-detailed">
+                        <div class="detailed-info-card">
+                            <div class="detailed-info-header">
+                                <div class="header-text">
+                                    <h3>Expediente del Alumno</h3>
+                                    <p>Toda la información registrada en el sistema</p>
                                 </div>
-                                <div class="info-item">
-                                    <label>Edad</label>
-                                    <p id="info-edad">-</p>
-                                </div>
-                                <div class="info-item">
-                                    <label>Sexo</label>
-                                    <p id="info-sexo">-</p>
-                                </div>
-                                <div class="info-item">
-                                    <label>Fecha de Nacimiento</label>
-                                    <p id="info-cumpleanos">-</p>
-                                </div>
+                                <i class="ri-file-user-line instrument-bg-icon"></i>
                             </div>
-                        </div>
-                        <div class="info-card">
-                            <h3><i class="ri-book-open-line"></i> Datos Académicos</h3>
-                            <div class="info-grid">
-                                <div class="info-item">
-                                    <label>Instrumento</label>
-                                    <p id="info-instrumento">-</p>
+
+                            <div class="detailed-info-grid">
+                                <!-- Identidad -->
+                                <div class="info-group">
+                                    <h4><i class="ri-fingerprint-line"></i> Identidad y Personal</h4>
+                                    <div class="info-row">
+                                        <span>Nombres Completos:</span>
+                                        <p id="det-full-name">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Código de Acceso:</span>
+                                        <p id="det-code">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Edad:</span>
+                                        <p id="det-edad">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Sexo:</span>
+                                        <p id="det-sexo">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Cumpleaños:</span>
+                                        <p id="det-cumpleanos">-</p>
+                                    </div>
                                 </div>
-                                <div class="info-item">
-                                    <label>Nivel Actual</label>
-                                    <p id="info-nivel">-</p>
+
+                                <!-- Apoderados -->
+                                <div class="info-group">
+                                    <h4><i class="ri-parent-line"></i> Apoderados y Familia</h4>
+                                    <div class="info-row">
+                                        <span>Nombre del Apoderado:</span>
+                                        <p id="det-apoderado">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Parentesco:</span>
+                                        <p>Titular / Registrado</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Celular de Contacto:</span>
+                                        <p id="det-celular">-</p>
+                                    </div>
                                 </div>
-                                <div class="info-item">
-                                    <label>Fecha de Registro</label>
-                                    <p id="info-registro">-</p>
+
+                                <!-- Ubicación y Contacto -->
+                                <div class="info-group">
+                                    <h4><i class="ri-map-pin-user-line"></i> Ubicación</h4>
+                                    <div class="info-row">
+                                        <span>Dirección Residencial:</span>
+                                        <p id="det-direccion">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Referencia:</span>
+                                        <p id="det-referencia">-</p>
+                                    </div>
                                 </div>
-                                <div class="info-item">
-                                    <label>Frecuencia</label>
-                                    <p id="info-frecuencia">-</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info-card">
-                            <h3><i class="ri-parent-line"></i> Contacto y Otros</h3>
-                            <div class="info-grid">
-                                <div class="info-item">
-                                    <label>Apoderado</label>
-                                    <p id="info-apoderado">-</p>
-                                </div>
-                                <div class="info-item">
-                                    <label>Celular</label>
-                                    <p id="info-celular">-</p>
-                                </div>
-                                <div class="info-item">
-                                    <label>Dirección</label>
-                                    <p id="info-direccion">-</p>
-                                </div>
-                                <div class="info-item">
-                                    <label>Referencia</label>
-                                    <p id="info-referencia">-</p>
+
+                                <!-- Académico -->
+                                <div class="info-group">
+                                    <h4><i class="ri-graduation-cap-line"></i> Información Académica</h4>
+                                    <div class="info-row">
+                                        <span>Instrumento:</span>
+                                        <p id="det-instrumento">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Nivel Actual:</span>
+                                        <p id="det-nivel">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Frecuencia:</span>
+                                        <p id="det-frecuencia">-</p>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Fecha de Registro:</span>
+                                        <p id="det-registro">-</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -663,8 +703,10 @@
                                     style="background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
                                     <div
                                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                                        <h4 style="margin: 0;"><i class="ri-list-check"></i> Subtareas y Recursos</h4>
-                                        <button class="btn-primary btn-sm" onclick="openSubtaskForm()">
+                                        <h4 style="margin: 0;" id="subtasks-header-title"><i class="ri-list-check"></i>
+                                            Subtareas y Recursos</h4>
+                                        <button class="btn-primary btn-sm" onclick="openSubtaskForm()"
+                                            id="btn-add-subtask-label">
                                             <i class="ri-add-line"></i> Agregar Subtarea
                                         </button>
                                     </div>
@@ -722,104 +764,7 @@
                         </div>
                     </div>
 
-                    <!-- Grade Editor Modal -->
-                    <div id="grade-editor-modal" class="mini-modal wide-modal">
-                        <div class="mini-modal-content">
-                            <div class="modal-header">
-                                <h3><i class="ri-edit-line"></i> Editor de Evaluación</h3>
-                                <button class="close-modal" onclick="hideGradeEditor()">&times;</button>
-                            </div>
-                            <div class="modal-body grading-form">
-                                <input type="hidden" id="grade-student-id" value="">
-                                <input type="hidden" id="grade-edit-index" value="">
-                                <div class="form-row-minimal">
-                                    <div class="form-group-minimal">
-                                        <label>Título del Examen / Evaluación</label>
-                                        <input type="text" id="grade-exam-title" placeholder="Ej: Examen Parcial">
-                                    </div>
-                                    <div class="form-group-minimal">
-                                        <label>Fecha de Examen</label>
-                                        <input type="date" id="grade-exam-date">
-                                    </div>
-                                    <div class="form-group-minimal">
-                                        <label>Módulo</label>
-                                        <select id="grade-module-selector" onchange="renderModuleSongsSelector([])">
-                                            <option value="1">Mod. 1</option>
-                                            <option value="2">Mod. 2</option>
-                                            <option value="3">Mod. 3</option>
-                                            <option value="4">Mod. 4</option>
-                                            <option value="5">Mod. 5</option>
-                                            <option value="6">Mod. 6</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group-minimal">
-                                        <label>Instrumento de Evaluación</label>
-                                        <select id="grade-instrument-selector" onchange="refreshGradeEditorTemplate()">
-                                            <option value="Piano">Piano</option>
-                                            <option value="Violín">Violín</option>
-                                            <option value="Guitarra">Guitarra</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row-minimal">
-                                    <div class="form-group-minimal">
-                                        <label
-                                            style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span>Seleccionar Canciones del Módulo</span>
-                                            <span id="selected-songs-count"
-                                                style="font-size: 0.7rem; color: var(--primary-color); font-weight: 600;">0
-                                                seleccionadas</span>
-                                        </label>
-                                        <div class="multiselect-container">
-                                            <div class="multiselect-trigger" onclick="toggleSongDropdown(event)">
-                                                <span id="multiselect-placeholder">Haz click para seleccionar
-                                                    canciones...</span>
-                                                <i class="ri-arrow-down-s-line"></i>
-                                            </div>
-                                            <div class="multiselect-dropdown" id="song-dropdown-list">
-                                                <div id="grade-songs-selector" class="songs-pill-dropdown-list">
-                                                    <!-- Generated by JS -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group-minimal">
-                                        <label>Añadir Canción Personalizada (Extra)</label>
-                                        <div class="input-group-append">
-                                            <input type="text" id="custom-song-name" placeholder="Nombre de la canción">
-                                            <button class="btn-sm btn-secondary" onclick="addCustomSongPill()">
-                                                <i class="ri-add-line"></i> Añadir
-                                            </button>
-                                        </div>
-                                        <div id="custom-songs-container" class="songs-pill-selector mini"
-                                            style="margin-top:0.5rem; min-height:40px;">
-                                            <!-- Custom songs pills -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row-minimal">
-                                    <div class="form-group-minimal">
-                                        <label>Nota Examen Teórico (0-20)</label>
-                                        <input type="number" id="grade-theory-score" min="0" max="20"
-                                            placeholder="Opcional">
-                                    </div>
-                                    <div class="form-group-minimal" style="display:flex; align-items:flex-end;">
-                                        <p class="form-hint">Si se deja vacío, solo se considerará el examen práctico.
-                                            Puedes editar los nombres de las categorías y ítems abajo.</p>
-                                    </div>
-                                </div>
 
-                                <div class="rubric-grid-editor" id="rubric-editor-container">
-                                    <!-- Categorized items will be rendered here via JS -->
-                                </div>
-
-                                <div class="mini-modal-actions">
-                                    <button class="btn-secondary" onclick="hideGradeEditor()">Cancelar</button>
-                                    <button class="btn-primary" onclick="saveGrades()">Guardar Calificación</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -968,9 +913,15 @@
                     </div>
                 </div>
                 <div class="tab-content" id="tab-repertorio">
-                    <div class="empty-tab-state">
-                        <i class="ri-music-2-line"></i>
-                        <p>La sección de Repertorio estará disponible próximamente.</p>
+                    <!-- Under Construction State -->
+                    <div class="under-construction-container">
+                        <div class="lottie-wrapper">
+                            <dotlottie-wc
+                                src="https://lottie.host/886ccd73-da55-423c-85f8-cbf9a50d68ff/rHMtDw6orS.lottie"
+                                autoplay loop class="uc-lottie" style="width: 100%; height: 100%;"
+                                preserveAspectRatio="xMidYMid meet"></dotlottie-wc>
+                        </div>
+                        <h3 class="uc-text">Estamos trabajando en la página, muy pronto estará disponible</h3>
                     </div>
                 </div>
             </section>
@@ -1137,10 +1088,10 @@
             <section id="lista-alumnos-section" class="content-section">
                 <div class="section-header">
                     <div class="status-filters">
-                        <button class="filter-btn active" data-filter="all">
+                        <button class="filter-btn" data-filter="all">
                             <i class="ri-group-line"></i> Todos (<span id="count-all">0</span>)
                         </button>
-                        <button class="filter-btn" data-filter="active">
+                        <button class="filter-btn active" data-filter="active">
                             <i class="ri-checkbox-circle-line"></i> Activos (<span id="count-active">0</span>)
                         </button>
                         <button class="filter-btn" data-filter="inactive">
@@ -1563,8 +1514,18 @@
             </section>
 
             <section id="repertorios-section" class="content-section">
-                <h2>Repertorios</h2>
-                <p>Esta sección estará disponible próximamente.</p>
+                <!-- Under Construction State -->
+                <!-- Under Construction State -->
+                <!-- Under Construction State -->
+                <!-- Under Construction State -->
+                <div class="under-construction-container">
+                    <div class="lottie-wrapper">
+                        <dotlottie-wc src="https://lottie.host/886ccd73-da55-423c-85f8-cbf9a50d68ff/rHMtDw6orS.lottie"
+                            autoplay loop class="uc-lottie" style="width: 100%; height: 100%;"
+                            preserveAspectRatio="xMidYMid meet"></dotlottie-wc>
+                    </div>
+                    <h3 class="uc-text">Estamos trabajando en la página, muy pronto estará disponible</h3>
+                </div>
             </section>
 
         </div>
@@ -1805,7 +1766,7 @@
     <!-- jspdf for PDF export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-    <script src="profile.js"></script>
+    <script src="profile_v2.js"></script>
     <script src="inbox.js"></script>
     <script src="admin.js"></script>
     <!-- Dedicated Grading Modals -->
@@ -1894,7 +1855,7 @@
                 <input type="hidden" id="subtask-student-id" value="">
                 <input type="hidden" id="subtask-edit-index" value="">
                 <div class="form-group-minimal">
-                    <label>Título de la Subtarea</label>
+                    <label id="subtask-title-label">Título de la Subtarea</label>
                     <input type="text" id="subtask-title" placeholder="Ej: Escalar en Do Mayor">
                 </div>
                 <div class="form-group-minimal">
@@ -1902,17 +1863,44 @@
                     <textarea id="subtask-description" rows="3"
                         placeholder="Detalles de lo que el alumno debe hacer..."></textarea>
                 </div>
-                <div class="form-group-minimal">
-                    <label>Vincular Canción del Módulo (Opcional)</label>
-                    <select id="subtask-song-link"
-                        style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
-                        <option value="">-- Sin canción vinculada --</option>
-                    </select>
+
+                <!-- Extras for Normal Tasks -->
+                <div id="subtask-extras-container">
+                    <div class="form-group-minimal">
+                        <label>Vincular Canción del Módulo (Opcional)</label>
+                        <select id="subtask-song-link"
+                            style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">-- Sin canción vinculada --</option>
+                        </select>
+                    </div>
+                    <div class="form-row-minimal">
+                        <div class="form-group-minimal" style="width: 100%;">
+                            <label>Link de Video (Opcional)</label>
+                            <input type="text" id="subtask-video" placeholder="Link YouTube/Drive">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-row-minimal">
-                    <div class="form-group-minimal" style="width: 100%;">
-                        <label>Link de Video (Opcional)</label>
-                        <input type="text" id="subtask-video" placeholder="Link YouTube/Drive">
+
+                <!-- Options for Exams -->
+                <div id="subtask-exam-options-container"
+                    style="display: none; background: #eff6ff; padding: 1rem; border-radius: 8px; border: 1px solid #dbeafe; margin-bottom: 1rem;">
+                    <a href="#" target="_blank" class="btn-primary full-width"
+                        style="margin-bottom: 10px; text-decoration: none; text-align: center; display: block;">
+                        <i class="ri-monitor-line"></i> Realizar Examen Virtual
+                    </a>
+
+                    <button type="button" class="btn-secondary full-width" onclick="goToPracticeGradingFromTheory()"
+                        style="margin-bottom: 10px; text-align: center; display: block;">
+                        <i class="ri-file-music-line"></i> Calificar Práctica (Ir a Rúbrica)
+                    </button>
+                    <label class="checkbox-option"
+                        style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #1e3a8a;">
+                        <input type="checkbox" id="subtask-theory-only">
+                        <span>Calificar solo Examen Teórico (Sin Práctica)</span>
+                    </label>
+                    <div id="subtask-theory-only-hint"
+                        style="font-size: 0.75rem; color: #64748b; margin-top: 5px; padding-left: 24px;">
+                        Si marcas esta opción, la nota que pongas aquí será la <b>Nota Final</b> del módulo.
                     </div>
                 </div>
 
@@ -1963,6 +1951,110 @@
             </div>
             <div class="mini-modal-actions" style="border-top: none; padding-top: 0;">
                 <button class="btn-secondary btn-sm" onclick="closeSubtaskView()">Cerrar Vista</button>
+            </div>
+        </div>
+    </div>
+    <!-- Grade Editor Modal (Moved to Global Scope) -->
+    <div id="grade-editor-modal" class="mini-modal wide-modal">
+        <div class="mini-modal-content">
+            <div class="modal-header">
+                <h3><i class="ri-edit-line"></i> Editor de Evaluación</h3>
+                <button class="close-modal" onclick="hideGradeEditor()">&times;</button>
+            </div>
+            <div class="modal-body grading-form">
+                <input type="hidden" id="grade-student-id" value="">
+                <input type="hidden" id="grade-edit-index" value="">
+                <div class="form-row-minimal">
+                    <div class="form-group-minimal">
+                        <label>Título del Examen / Evaluación</label>
+                        <input type="text" id="grade-exam-title" placeholder="Ej: Examen Parcial">
+                    </div>
+                    <div class="form-group-minimal">
+                        <label>Fecha de Examen</label>
+                        <input type="date" id="grade-exam-date">
+                    </div>
+                    <div class="form-group-minimal">
+                        <label>Módulo</label>
+                        <select id="grade-module-selector" onchange="renderModuleSongsSelector([])">
+                            <option value="1">Mod. 1</option>
+                            <option value="2">Mod. 2</option>
+                            <option value="3">Mod. 3</option>
+                            <option value="4">Mod. 4</option>
+                            <option value="5">Mod. 5</option>
+                            <option value="6">Mod. 6</option>
+                        </select>
+                    </div>
+                    <div class="form-group-minimal">
+                        <label>Instrumento de Evaluación</label>
+                        <select id="grade-instrument-selector" onchange="refreshGradeEditorTemplate()">
+                            <option value="Piano">Piano</option>
+                            <option value="Violín">Violín</option>
+                            <option value="Guitarra">Guitarra</option>
+                        </select>
+                    </div>
+                    <div class="form-group-minimal">
+                        <label>Tipo de Evaluación</label>
+                        <select id="grade-exam-type">
+                            <option value="regular">Regular / Práctica</option>
+                            <option value="partial">Examen Parcial</option>
+                            <option value="final">Examen Final</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row-minimal">
+                    <div class="form-group-minimal">
+                        <label style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Seleccionar Canciones del Módulo</span>
+                            <span id="selected-songs-count"
+                                style="font-size: 0.7rem; color: var(--primary-color); font-weight: 600;">0
+                                seleccionadas</span>
+                        </label>
+                        <div class="multiselect-container">
+                            <div class="multiselect-trigger" onclick="toggleSongDropdown(event)">
+                                <span id="multiselect-placeholder">Haz click para seleccionar canciones...</span>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                            <div class="multiselect-dropdown" id="song-dropdown-list">
+                                <div id="grade-songs-selector" class="songs-pill-dropdown-list">
+                                    <!-- Generated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-minimal">
+                        <label>Añadir Canción Personalizada (Extra)</label>
+                        <div class="input-group-append">
+                            <input type="text" id="custom-song-name" placeholder="Nombre de la canción">
+                            <button class="btn-sm btn-secondary" onclick="addCustomSongPill()">
+                                <i class="ri-add-line"></i> Añadir
+                            </button>
+                        </div>
+                        <div id="custom-songs-container" class="songs-pill-selector mini"
+                            style="margin-top:0.5rem; min-height:40px;">
+                            <!-- Custom songs pills -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row-minimal">
+                    <div class="form-group-minimal">
+                        <label>Nota Examen Teórico (0-20)</label>
+                        <input type="number" id="grade-theory-score" min="0" max="20" placeholder="Opcional">
+                    </div>
+                    <div class="form-group-minimal" style="display:flex; align-items:flex-end;">
+                        <p class="form-hint">Si se deja vacío, solo se considerará el examen práctico. Puedes editar los
+                            nombres de las categorías y ítems abajo.</p>
+                    </div>
+                </div>
+
+                <div class="rubric-grid-editor" id="rubric-editor-container">
+                    <!-- Categorized items will be rendered here via JS -->
+                </div>
+
+                <div class="mini-modal-actions">
+                    <button class="btn-secondary" onclick="hideGradeEditor()">Cancelar</button>
+                    <button class="btn-primary" onclick="saveGrades()">Guardar Calificación</button>
+                </div>
             </div>
         </div>
     </div>
