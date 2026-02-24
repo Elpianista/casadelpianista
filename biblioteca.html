@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca | Casa del Pianista</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <a href="index.html"><img src="logo-admin.png" alt="Casa del Pianista Logo"></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="biblioteca.html" class="active">Biblioteca</a></li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="recomendaciones.html">Recomendaciones</a></li>
+
+                    <li><a href="#" class="icon-btn" title="Intranet"><i class="ri-user-line"></i></a></li>
+                    <li><a href="#" class="icon-btn" id="admin-btn" title="Panel Administrativo"><i
+                                class="ri-settings-3-line"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Library Hero Section -->
+        <section class="library-hero fade-in-up">
+            <div class="bg-glow bg-glow-1"></div>
+            <div class="bg-glow bg-glow-2"></div>
+
+            <div class="container library-hero-content">
+                <div class="hero-badge">RECURSOS & NOTICIAS</div>
+                <h1 class="library-title">BIBLIOTECA <span class="highlight-gold">MUSICAL</span></h1>
+                <p class="library-subtitle">Explora artículos fascinantes sobre teoría musical, historia, técnicas de
+                    piano y consejos para dominar tu arte.</p>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box glass-panel">
+                        <i class="ri-search-line search-icon"></i>
+                        <input type="text" id="library-search" placeholder="Buscar partituras, teoría, compositores..."
+                            autocomplete="off">
+                        <button class="btn-modern btn-primary-modern search-btn">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Tabs -->
+        <section class="library-tabs-section">
+            <div class="container">
+                <div class="library-tabs glass-panel">
+                    <button class="tab-btn active" data-category="todos">Todo</button>
+                    <button class="tab-btn" data-category="teoria">Teoría Musical</button>
+                    <button class="tab-btn" data-category="historia">Historia</button>
+                    <button class="tab-btn" data-category="tecnica">Técnica</button>
+                    <button class="tab-btn" data-category="noticias">Noticias</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Grid Section -->
+        <section class="article-grid-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="highlight-gold">ÚLTIMOS</span> ARTÍCULOS</h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="article-grid" id="articles-container">
+                    <!-- Article Card 1 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up" data-category="teoria">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1470&auto=format&fit=crop"
+                                alt="Acordes Jazz">
+                            <span class="article-category-badge">Teoría</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="ri-calendar-line"></i> 24 Feb, 2024</span>
+                                <span><i class="ri-time-line"></i> 5 min</span>
+                            </div>
+                            <h3 class="article-title">Desmitificando los Acordes de Jazz: Extensiones y Alteraciones
+                            </h3>
+                            <p class="article-excerpt">Aprende cómo las novenas, oncenas y trecenas pueden transformar
+                                tus progresiones básicas en armonías ricas y sofisticadas.</p>
+                            <div class="article-footer">
+                                <span class="read-more">Leer artículo <i class="ri-arrow-right-line"></i></span>
+                                <div class="article-stats">
+                                    <span><i class="ri-heart-line"></i> 124</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Article Card 2 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up" data-category="historia"
+                        style="animation-delay: 0.1s;">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?q=80&w=1470&auto=format&fit=crop"
+                                alt="Chopin">
+                            <span class="article-category-badge">Historia</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="ri-calendar-line"></i> 20 Feb, 2024</span>
+                                <span><i class="ri-time-line"></i> 8 min</span>
+                            </div>
+                            <h3 class="article-title">El Poeta del Piano: El Legado Inmortal de Frédéric Chopin</h3>
+                            <p class="article-excerpt">Un viaje profundo por la vida del maestro del Romanticismo,
+                                explorando cómo revolucionó técnica y emocionalmente el repertorio pianístico.</p>
+                            <div class="article-footer">
+                                <span class="read-more">Leer artículo <i class="ri-arrow-right-line"></i></span>
+                                <div class="article-stats">
+                                    <span><i class="ri-heart-line"></i> 340</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Article Card 3 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up" data-category="tecnica"
+                        style="animation-delay: 0.2s;">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1571239462867-0ccda5dcaf01?q=80&w=1470&auto=format&fit=crop"
+                                alt="Piano Posture">
+                            <span class="article-category-badge">Técnica</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="ri-calendar-line"></i> 15 Feb, 2024</span>
+                                <span><i class="ri-time-line"></i> 4 min</span>
+                            </div>
+                            <h3 class="article-title">Postura y Relajación: El Secreto de la Velocidad y Precisión</h3>
+                            <p class="article-excerpt">Evita lesiones y toca pasajes rápidos sin esfuerzo dominando el
+                                peso de tus brazos y la curvatura natural de tus manos.</p>
+                            <div class="article-footer">
+                                <span class="read-more">Leer artículo <i class="ri-arrow-right-line"></i></span>
+                                <div class="article-stats">
+                                    <span><i class="ri-heart-line"></i> 89</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Article Card 4 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up" data-category="noticias"
+                        style="animation-delay: 0.3s;">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1470&auto=format&fit=crop"
+                                alt="Piano Recital">
+                            <span class="article-category-badge">Noticias</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="ri-calendar-line"></i> 10 Feb, 2024</span>
+                                <span><i class="ri-time-line"></i> 3 min</span>
+                            </div>
+                            <h3 class="article-title">Recital de Otoño: Alumnos Destacados en el Conservatorio</h3>
+                            <p class="article-excerpt">Resumen de nuestra última noche de gala donde los alumnos
+                                avanzados presentaron obras maestras en vivo ante más de 200 personas.</p>
+                            <div class="article-footer">
+                                <span class="read-more">Leer artículo <i class="ri-arrow-right-line"></i></span>
+                                <div class="article-stats">
+                                    <span><i class="ri-heart-line"></i> 215</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn-modern btn-secondary-modern" id="load-more-btn">
+                        Cargar más artículos <i class="ri-loader-4-line"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo-admin.png" alt="Casa del Pianista" class="footer-logo">
+                    <p>Academia de Piano</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="biblioteca.html">Biblioteca</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="tienda.html">Tienda de Libros</a></li>
+                        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="ri-phone-line"></i> 939 111 322</p>
+                    <p><i class="ri-map-pin-line"></i> Tarapoto, San Martín</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Casa del Pianista E.I.R.L. | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="biblioteca.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

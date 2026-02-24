@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo | Casa del Pianista</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <a href="index.html"><img src="logo-admin.png" alt="Casa del Pianista Logo"></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="biblioteca.html" class="active">Biblioteca</a></li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="recomendaciones.html">Recomendaciones</a></li>
+
+                    <li><a href="#" class="icon-btn" title="Intranet"><i class="ri-user-line"></i></a></li>
+                    <li><a href="#" class="icon-btn" id="admin-btn" title="Panel Administrativo"><i
+                                class="ri-settings-3-line"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Article Hero Image & Title -->
+        <article class="article-detail">
+            <header class="article-header">
+                <div class="article-hero-img">
+                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1470&auto=format&fit=crop"
+                        alt="Acordes Jazz">
+                    <div class="hero-overlay"></div>
+                </div>
+
+                <div class="container relative z-2">
+                    <div class="article-header-content fade-in-up">
+                        <a href="biblioteca.html" class="back-to-library-btn">
+                            <i class="ri-arrow-left-line"></i> Volver a la Biblioteca
+                        </a>
+                        <div class="article-badges">
+                            <span class="article-category-badge header-badge">Teoría Musical</span>
+                        </div>
+                        <h1 class="article-main-title">Desmitificando los Acordes de Jazz: Extensiones y Alteraciones
+                        </h1>
+                        <div class="article-meta-detailed">
+                            <div class="author-info">
+                                <img src="logo-admin.png" alt="Autor" class="author-avatar">
+                                <span>Por <strong>Casa del Pianista</strong></span>
+                            </div>
+                            <div class="post-data">
+                                <span><i class="ri-calendar-line"></i> 24 Feb, 2024</span>
+                                <span class="dot-separator">•</span>
+                                <span><i class="ri-time-line"></i> Lectura de 5 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Article Body -->
+            <div class="container">
+                <div class="article-body-wrapper fade-in-up" style="animation-delay: 0.2s;">
+
+                    <!-- Social Actions Floating Sidebar (Desktop) -->
+                    <div class="article-sidebar">
+                        <div class="social-share-floating glass-panel">
+                            <button class="action-btn like-btn" title="Me Gusta" id="like-btn">
+                                <i class="ri-heart-line"></i>
+                                <span class="like-count">124</span>
+                            </button>
+                            <div class="separator-line"></div>
+                            <button class="action-btn share-btn" title="Compartir en WhatsApp">
+                                <i class="ri-whatsapp-line"></i>
+                            </button>
+                            <button class="action-btn share-btn" title="Compartir en Facebook">
+                                <i class="ri-facebook-circle-line"></i>
+                            </button>
+                            <button class="action-btn share-btn" title="Copiar Enlace">
+                                <i class="ri-link"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Content -->
+                    <div class="article-content-area">
+                        <p class="lead-paragraph">
+                            El jazz a menudo parece un idioma extranjero para los pianistas con formación clásica. Sin
+                            embargo, detrás de las progresiones aparentemente complejas, se esconde una lógica
+                            matemática y emocional brillante. En este artículo, desglosaremos cómo las novenas, oncenas
+                            y trecenas transforman acordes básicos en armonías ricas y sofisticadas.
+                        </p>
+
+                        <h2>Más allá de la Triada y la Séptima</h2>
+                        <p>
+                            Mientras que el pop y el clásico tradicionalmente se apoyan en tríadas y acordes de séptima
+                            (Mayor, Menor, Dominante, Semidisminuido y Disminuido), el Jazz considera a la séptima como
+                            la <em>fundación</em> sobre la cual construir. Las verdaderas "notas de color" provienen de
+                            las extensiones.
+                        </p>
+
+                        <blockquote>
+                            "No busques tocar todo lo que sabes. Busca tocar lo necesario para hacer que la música suene
+                            bien." – Thelonious Monk
+                        </blockquote>
+
+                        <p>
+                            Las extensiones son las notas que continúan la secuencia de terceras por encima de la
+                            séptima: la 9na, la 11va y la 13va.
+                        </p>
+
+                        <!-- Injected Image Example -->
+                        <figure class="article-in-text-img">
+                            <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=1470&auto=format&fit=crop"
+                                alt="Pianista tocando acordes de jazz">
+                            <figcaption>Las voces (voicings) del jazz distribuyen estas extensiones entre ambas manos.
+                            </figcaption>
+                        </figure>
+
+                        <h2>Alteraciones: Añadiendo Tensión (Spice)</h2>
+                        <p>
+                            Si las extensiones añaden "color", las <strong>alteraciones</strong> añaden "tensión". Estas
+                            son exclusivas casi siempre de los acordes dominantes (V7). Las alteraciones comunes son:
+                        </p>
+                        <ul class="article-list">
+                            <li><strong>b9 (Novena menor):</strong> Introduce una disonancia melancólica muy usada en
+                                progresiones menores (ii-V-i).</li>
+                            <li><strong>#9 (Novena aumentada):</strong> El famoso acorde "Hendrix", altamente blusero.
+                            </li>
+                            <li><strong>#11 / b5 (Oncena aumentada):</strong> Brinda un sonido flotante, característico
+                                de la escala Lidia Dominante.</li>
+                            <li><strong>b13 / #5 (Trecena menor):</strong> Produce mucha gravedad para resolver hacia el
+                                acorde i o I.</li>
+                        </ul>
+
+                        <div class="interactive-exercise glass-panel">
+                            <h3><i class="ri-lightbulb-flash-line highlight-gold"></i> Ejercicio Práctico</h3>
+                            <p>Toma un acorde de G7 (Sol, Si, Re, Fa) en tu mano izquierda (toca solo Sol y Fa como
+                                "Shell Voicing"). En tu mano derecha, toca un acorde de Mi bemol Mayor (Mib, Sol, Sib).
+                                Al juntarlos, acabas de tocar un hermoso <strong>G7(b13#9)</strong>.</p>
+                        </div>
+
+                        <!-- Article Tags & Categories -->
+                        <div class="article-tags-section">
+                            <h4>Etiquetas y Categorías:</h4>
+                            <div class="tags-container">
+                                <a href="biblioteca.html" class="tag-btn"><i class="ri-price-tag-3-line"></i> Jazz</a>
+                                <a href="biblioteca.html" class="tag-btn"><i class="ri-price-tag-3-line"></i>
+                                    Acordes</a>
+                                <a href="biblioteca.html" class="tag-btn"><i class="ri-price-tag-3-line"></i> Armonía
+                                    Avanzada</a>
+                                <a href="biblioteca.html" class="category-btn"><i class="ri-folder-open-line"></i>
+                                    Teoría Musical</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Banner Scrolling Diagonal (Reused) -->
+        <div class="scrolling-banner-container">
+            <div class="scrolling-banner">
+                <div class="scrolling-content">
+                    <span>TEORÍA MUSICAL • TÉCNICA PIANÍSTICA • HISTORIA • CONSEJOS • DESARROLLO ARTÍSTICO •</span>
+                    <span>TEORÍA MUSICAL • TÉCNICA PIANÍSTICA • HISTORIA • CONSEJOS • DESARROLLO ARTÍSTICO •</span>
+                    <span>TEORÍA MUSICAL • TÉCNICA PIANÍSTICA • HISTORIA • CONSEJOS • DESARROLLO ARTÍSTICO •</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations Block -->
+        <section class="suggestions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>TE PODRÍA <span class="highlight-gold">INTERESAR</span></h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="article-grid">
+                    <!-- Suggested 1 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?q=80&w=1470&auto=format&fit=crop"
+                                alt="Chopin">
+                            <span class="article-category-badge">Historia</span>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">El Poeta del Piano: El Legado Inmortal de Frédéric Chopin</h3>
+                            <div class="article-footer" style="padding-top:0.5rem; border:none;">
+                                <span class="read-more">Leer artículo</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Suggested 2 -->
+                    <a href="articulo.html" class="article-card glass-panel fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1571239462867-0ccda5dcaf01?q=80&w=1470&auto=format&fit=crop"
+                                alt="Piano Posture">
+                            <span class="article-category-badge">Técnica</span>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">Postura y Relajación: El Secreto de la Velocidad y Precisión</h3>
+                            <div class="article-footer" style="padding-top:0.5rem; border:none;">
+                                <span class="read-more">Leer artículo</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo-admin.png" alt="Casa del Pianista" class="footer-logo">
+                    <p>Academia de Piano</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="biblioteca.html">Biblioteca</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Casa del Pianista E.I.R.L. | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="biblioteca.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

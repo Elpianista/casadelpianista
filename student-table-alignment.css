@@ -1,0 +1,16 @@
+/* Center align table cells except first column */
+.students-table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.students-table tbody td:first-child {
+    text-align: left;
+}
+
+/* WhatsApp link inline display */
+.students-table tbody td a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}

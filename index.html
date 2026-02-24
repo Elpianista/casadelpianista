@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa del Pianista | Academia de Piano en Tarapoto</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700;800;900&family=Outfit:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Remix Icon for modern SVG icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <a href="index.html"><img src="logo-admin.png" alt="Casa del Pianista Logo"></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="biblioteca.html">Biblioteca</a></li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="recomendaciones.html">Recomendaciones</a></li>
+
+                    <li><a href="#" class="icon-btn" title="Intranet"><i class="ri-user-line"></i></a></li>
+                    <li><a href="#" class="icon-btn" id="admin-btn" title="Panel Administrativo"><i
+                                class="ri-settings-3-line"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-modern">
+            <!-- Signos Musicales Flotantes -->
+            <div class="floating-notes">
+                <div class="music-note note-1">♪</div>
+                <div class="music-note note-2">♫</div>
+                <div class="music-note note-3">♬</div>
+                <div class="music-note note-4">𝄞</div>
+                <div class="music-note note-5">♩</div>
+                <div class="music-note note-6">♪</div>
+                <div class="music-note note-7">𝄢</div>
+                <div class="music-note note-8">♫</div>
+            </div>
+
+            <div class="container hero-grid">
+                <!-- Columna Izquierda - Contenido -->
+                <div class="hero-content-left">
+                    <!-- Badge Superior -->
+                    <div class="top-badge">
+                        <i class="ri-star-fill"></i>
+                        <span>MATRÍCULAS ABIERTAS 2024</span>
+                    </div>
+
+                    <!-- Título Principal -->
+                    <h1 class="hero-title-modern">
+                        <span class="title-line-1">
+                            <span class="title-white">LA</span>
+                            <span class="title-gold">CASA</span>
+                        </span>
+                        <span class="title-gold">DEL</span>
+                        <span class="title-white">PIANISTA.</span>
+                    </h1>
+
+                    <!-- Subtítulo -->
+                    <p class="hero-subtitle">
+                        No solo enseñamos notas, creamos artistas. Aprende piano con la metodología más disruptiva y
+                        joven directamente en tu sala.
+                    </p>
+
+                    <!-- Botones de Acción -->
+                    <div class="hero-actions">
+                        <a href="servicios.html" class="btn-modern btn-secondary-modern">
+                            MÉTODOS <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha - Imagen del Piano -->
+                <div class="hero-image-container">
+                    <!-- Badge A Domicilio -->
+                    <div class="domicilio-badge">
+                        <i class="ri-music-2-fill"></i>
+                        <div class="badge-text">
+                            <strong>A DOMICILIO</strong>
+                            <span>En todo el país</span>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor de Imagen 3D -->
+                    <div class="piano-3d-card">
+                        <img src="piano_3d_hands.jpg" alt="Piano Yamaha 3D">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Scrolling Diagonal -->
+        <div class="scrolling-banner-container">
+            <div class="scrolling-banner">
+                <div class="scrolling-content">
+                    <span>Piano en Música Clásica • Baladas • Pop • Rock • Himnos Cristianos • Alabanzas • Worships
+                        •</span>
+                    <span>Piano en Música Clásica • Baladas • Pop • Rock • Himnos Cristianos • Alabanzas • Worships
+                        •</span>
+                    <span>Piano en Música Clásica • Baladas • Pop • Rock • Himnos Cristianos • Alabanzas • Worships
+                        •</span>
+                    <span>Piano en Música Clásica • Baladas • Pop • Rock • Himnos Cristianos • Alabanzas • Worships
+                        •</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Tu Camino al Éxito -->
+        <section class="plans-section">
+            <div class="container">
+                <h2 class="plans-title">TU CAMINO AL <span class="highlight-gold">ÉXITO</span></h2>
+                <p class="plans-subtitle">Un sistema flexible diseñado para que el piano se adapte a tu vida, no al
+                    revés.</p>
+
+                <div class="plans-grid">
+                    <!-- Plan 1: Intensivo Mensual -->
+                    <div class="plan-card plan-side" data-animate="left">
+                        <div class="plan-icon">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <h3 class="plan-name">Intensivo Mensual</h3>
+                        <p class="plan-description">El programa favorito para los que quieren ver resultados rápidos.
+                        </p>
+                        <ul class="plan-features">
+                            <li><span class="bullet">•</span> 8 Sesiones Élite</li>
+                            <li><span class="bullet">•</span> 60 Minutos de pura técnica</li>
+                            <li><span class="bullet">•</span> Seguimiento personalizado</li>
+                        </ul>
+                    </div>
+
+                    <!-- Plan 2: Comodidad Premium (Destacado) -->
+                    <div class="plan-card plan-featured" data-animate="center">
+                        <div class="featured-badge">MÁS SOLICITADO</div>
+                        <div class="plan-icon plan-icon-featured">
+                            <i class="ri-home-smile-line"></i>
+                        </div>
+                        <h3 class="plan-name plan-name-featured">Comodidad Premium</h3>
+                        <p class="plan-description plan-description-featured">Olvídate del tráfico. Transformamos tu
+                            sala en un conservatorio moderno.</p>
+                        <div class="plan-schedule">
+                            <span class="schedule-text">Lunes a Sábado</span>
+                            <span class="schedule-badge">DISPONIBLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Plan 3: Repertorio Pop/Mix -->
+                    <div class="plan-card plan-side" data-animate="right">
+                        <div class="plan-icon">
+                            <i class="ri-music-2-line"></i>
+                        </div>
+                        <h3 class="plan-name">Repertorio Pop/Mix</h3>
+                        <p class="plan-description">Toca lo que escuchas en Spotify. Jazz, Pop, Rock o Clásico.</p>
+                        <ul class="plan-features">
+                            <li><span class="bullet">•</span> Clases Multi-estilo</li>
+                            <li><span class="bullet">•</span> Material Digital HD</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Testimonios Chat -->
+        <section class="chat-section">
+            <div class="container chat-grid">
+                <!-- Columna Izquierda: Título -->
+                <div class="chat-content">
+                    <h2 class="chat-title">
+                        <span class="text-black">LO QUE DICEN</span><br>
+                        <span class="text-black">EN EL</span> <span class="text-white">CHAT.</span>
+                    </h2>
+                    <p class="chat-quote">"Literalmente mi parte favorita de la semana."</p>
+                </div>
+
+                <!-- Columna Derecha: Burbujas de Chat -->
+                <div class="chat-bubbles">
+                    <!-- Mensaje 1 -->
+                    <div class="chat-bubble bubble-black" data-animate="right">
+                        <p>"Profe! Ya me sale la intro de Interstellar, mi mamá casi llora haha! 🔥"</p>
+                        <span class="chat-meta">Leído 14:02</span>
+                    </div>
+
+                    <!-- Mensaje 2 -->
+                    <div class="chat-bubble bubble-white" data-animate="left">
+                        <p><strong>"¡Grande Lucas! Próxima semana le metemos a los acordes de Jazz 🎹"</strong></p>
+                        <span class="chat-meta">Enviado 14:05</span>
+                    </div>
+
+                    <!-- Mensaje 3 -->
+                    <div class="chat-bubble bubble-black" data-animate="right">
+                        <p>"Nunca pensé que el piano fuera tan cool, gracias por la paciencia!"</p>
+                        <span class="chat-meta">Leído 14:10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Lo Que Enseñamos -->
+        <section class="teach-section">
+            <!-- Marca de agua de fondo -->
+            <div class="teach-watermark">
+                <div class="watermark-row">PIANO PIANO PIANO EN TODOS LADOS PIANO PIANO PIANO EN TODOS LADOS PIANO
+                    PIANO PIANO EN TODOS LADOS</div>
+                <div class="watermark-row">PIANO PIANO PIANO EN TODOS LADOS PIANO PIANO PIANO EN TODOS LADOS PIANO
+                    PIANO PIANO EN TODOS LADOS</div>
+                <div class="watermark-row">PIANO PIANO PIANO EN TODOS LADOS PIANO PIANO PIANO EN TODOS LADOS PIANO
+                    PIANO PIANO EN TODOS LADOS</div>
+            </div>
+
+            <div class="container">
+                <div class="teach-header" data-animate="up">
+                    <h2 class="teach-title">LO QUE <br><span class="highlight-gold">ENSEÑAMOS.</span></h2>
+                    <p class="teach-subtitle">METODOLOGÍAS DISRUPTIVAS PARA EL PIANISTA DE HOY.</p>
+                </div>
+
+                <div class="teach-grid">
+                    <!-- Tarjeta 1: Piano Clásico -->
+                    <div class="teach-card" data-animate="left">
+                        <div class="card-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=1470&auto=format&fit=crop');">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-top-action">
+                                <div class="btn-circular">
+                                    <i class="ri-arrow-right-up-line"></i>
+                                </div>
+                            </div>
+                            <div class="card-main-info">
+                                <span class="card-tag">TÉCNICA & LECTURA</span>
+                                <h3 class="card-title">PIANO <br>CLÁSICO</h3>
+                            </div>
+                            <div class="card-hidden-content">
+                                <p class="card-description">Domina la técnica formal desde cero. Sonatas, preludios
+                                    y lectura fluida para interpretar a los grandes maestros con elegancia.</p>
+                                <div class="card-topics">
+                                    <span>• POSTURA</span>
+                                    <span>• BACH & CHOPIN</span>
+                                    <span>• INTERPRETACIÓN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Pop & Rock -->
+                    <div class="teach-card" data-animate="up">
+                        <div class="card-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1514119412350-e174d90d280e?q=80&w=1470&auto=format&fit=crop');">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-top-action">
+                                <div class="btn-circular">
+                                    <i class="ri-arrow-right-up-line"></i>
+                                </div>
+                            </div>
+                            <div class="card-main-info">
+                                <span class="card-tag">RITMO & ENERGÍA</span>
+                                <h3 class="card-title">POP & <br>ROCK</h3>
+                            </div>
+                            <div class="card-hidden-content">
+                                <p class="card-description">Toca los hits que escuchas hoy. Aprende cifrado,
+                                    acompañamiento rítmico y cómo sonar como una banda completa desde tu piano.</p>
+                                <div class="card-topics">
+                                    <span>• CIFRADO AMERICANO</span>
+                                    <span>• SOLOS</span>
+                                    <span>• SÍNTESIS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Alabanza & Himnos -->
+                    <div class="teach-card" data-animate="up">
+                        <div class="card-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=1470&auto=format&fit=crop');">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-top-action">
+                                <div class="btn-circular">
+                                    <i class="ri-arrow-right-up-line"></i>
+                                </div>
+                            </div>
+                            <div class="card-main-info">
+                                <span class="card-tag">MINISTERIO & ALMA</span>
+                                <h3 class="card-title">ALABANZA <br>& HIMNOS</h3>
+                            </div>
+                            <div class="card-hidden-content">
+                                <p class="card-description">Especialízate en el servicio ministerial. Acordes de
+                                    adoración contemporánea, re-armonización de himnos clásicos y fluidez en vivo.</p>
+                                <div class="card-topics">
+                                    <span>• WORSHIP PAD</span>
+                                    <span>• MODULACIONES</span>
+                                    <span>• LIDERAZGO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Cinematic -->
+                    <div class="teach-card" data-animate="right">
+                        <div class="card-bg"
+                            style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop');">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-top-action">
+                                <div class="btn-circular">
+                                    <i class="ri-arrow-right-up-line"></i>
+                                </div>
+                            </div>
+                            <div class="card-main-info">
+                                <span class="card-tag">PASIÓN & DRAMA</span>
+                                <h3 class="card-title">PIANO <br>CINEMATIC</h3>
+                            </div>
+                            <div class="card-hidden-content">
+                                <p class="card-description">Crea atmósferas épicas y emotivas. Interpretación de bandas
+                                    sonoras, arreglos orquestales para piano y expresión máxima.</p>
+                                <div class="card-topics">
+                                    <span>• SOUNDTRACKS</span>
+                                    <span>• ÉPICO</span>
+                                    <span>• COMPOSICIÓN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Tu Ruta de Maestría -->
+        <section class="route-section">
+            <div class="container">
+                <div class="route-header" data-animate="up">
+                    <span class="route-pre">METODOLOGÍA PASO A PASO</span>
+                    <h2 class="route-title">TU RUTA DE <br><span class="highlight-gold">MAESTRÍA.</span></h2>
+                    <p class="route-subtitle">TRES ETAPAS FUNDAMENTALES DISEÑADAS PARA TRANSFORMAR TU TALENTO EN
+                        ARTE.</p>
+                </div>
+
+                <div class="route-grid">
+                    <!-- Nivel Inicial -->
+                    <div class="route-card initial" data-animate="left">
+                        <div class="route-number">01</div>
+                        <div class="route-card-content">
+                            <div class="route-icon">
+                                <i class="ri-ruler-2-line"></i>
+                            </div>
+                            <span class="route-level">NIVEL INICIAL</span>
+                            <h3 class="route-name">CIMIENTO <br>SONORO</h3>
+                            <p class="route-desc">Desbloquea tu conexión natural con las teclas. Establecemos una
+                                base técnica irrompible.</p>
+
+                            <div class="route-modules">
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 1</span>
+                                    <span class="mod-name">POSTURA & NOTAS</span>
+                                </div>
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 2</span>
+                                    <span class="mod-name">COORDINACIÓN</span>
+                                </div>
+                            </div>
+
+                            <div class="route-footer">
+                                <div class="footer-icons">
+                                    <i class="ri-user-line"></i>
+                                    <i class="ri-user-heart-line"></i>
+                                    <i class="ri-team-line"></i>
+                                </div>
+                                <div class="footer-meta">
+                                    <span>PERSONALIZADO</span>
+                                    <span class="method">MÉTODO ZERO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nivel Intermedio -->
+                    <div class="route-card intermediate" data-animate="up">
+                        <div class="route-number">02</div>
+                        <div class="route-card-content">
+                            <div class="route-icon">
+                                <i class="ri-drop-line"></i>
+                            </div>
+                            <span class="route-level">NIVEL INTERMEDIO</span>
+                            <h3 class="route-name">EXPRESIÓN <br>FLUIDA</h3>
+                            <p class="route-desc">El lenguaje musical se vuelve fluido. Empezamos a construir tu
+                                identidad como pianista.</p>
+
+                            <div class="route-modules">
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 3</span>
+                                    <span class="mod-name">ARMONÍA PRO</span>
+                                </div>
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 4</span>
+                                    <span class="mod-name">IMPROVISACIÓN</span>
+                                </div>
+                            </div>
+
+                            <div class="route-footer">
+                                <div class="footer-icons">
+                                    <i class="ri-user-line"></i>
+                                    <i class="ri-user-heart-line"></i>
+                                    <i class="ri-team-line"></i>
+                                </div>
+                                <div class="footer-meta">
+                                    <span>PERSONALIZADO</span>
+                                    <span class="method">MÉTODO ZERO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nivel Avanzado -->
+                    <div class="route-card advanced" data-animate="right">
+                        <div class="route-number">03</div>
+                        <div class="route-card-content">
+                            <div class="route-icon">
+                                <i class="ri-trophy-line"></i>
+                            </div>
+                            <span class="route-level">NIVEL AVANZADO</span>
+                            <h3 class="route-name">MAESTRÍA <br>TOTAL</h3>
+                            <p class="route-desc">Dominio absoluto del escenario y el instrumento. Tu técnica sirve
+                                a tu emoción.</p>
+
+                            <div class="route-modules">
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 5</span>
+                                    <span class="mod-name">PERFORMANCE</span>
+                                </div>
+                                <div class="module-tag">
+                                    <span class="dot"></span>
+                                    <span class="mod-num">MÓDULO 6</span>
+                                    <span class="mod-name">COMPOSICIÓN</span>
+                                </div>
+                            </div>
+
+                            <div class="route-footer">
+                                <div class="footer-icons">
+                                    <i class="ri-user-line"></i>
+                                    <i class="ri-user-heart-line"></i>
+                                    <i class="ri-team-line"></i>
+                                </div>
+                                <div class="footer-meta">
+                                    <span>PERSONALIZADO</span>
+                                    <span class="method">MÉTODO ZERO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sección: Ubicación y Cobertura -->
+        <!-- Sección: Ubicación y Cobertura -->
+        <section class="location-section">
+            <div class="container">
+                <div class="location-grid">
+                    <!-- Contenido Izquierdo: Texto y Botones -->
+                    <div class="location-content">
+                        <h2 class="location-title">LLEVAMOS LA MÚSICA <br><span class="highlight-gold">A TU
+                                HOGAR.</span></h2>
+                        <p class="location-subtitle">CLASES A DOMICILIO EN TARAPOTO Y ALREDEDORES.</p>
+
+                        <div class="location-list">
+                            <div class="location-item" data-target="morales">
+                                <i class="ri-map-pin-user-fill"></i>
+                                <span>MORALES</span>
+                            </div>
+                            <div class="location-item" data-target="tarapoto">
+                                <i class="ri-map-pin-user-fill"></i>
+                                <span>TARAPOTO</span>
+                            </div>
+                            <div class="location-item" data-target="banda">
+                                <i class="ri-map-pin-user-fill"></i>
+                                <span>BANDA DE SHILCAYO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido Derecho: Mapa Interactivo -->
+                    <div class="location-map-wrapper">
+                        <div class="delivery-moto">
+                            <i class="ri-motorbike-fill"></i>
+                            <div class="moto-trail"></div>
+                            <div class="moto-waves">
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo-admin.png" alt="Casa del Pianista" class="footer-logo">
+                    <p>Academia de Piano</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="biblioteca.html">Biblioteca</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="tienda.html">Tienda de Libros</a></li>
+                        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="ri-phone-line"></i> 939 111 322</p>
+                    <p><i class="ri-map-pin-line"></i> Tarapoto, San Martín</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Casa del Pianista E.I.R.L. | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Autenticación -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <i class="ri-shield-keyhole-line"></i>
+                <h2>Panel Administrativo</h2>
+                <p class="modal-subtitle">Sistema de Gestión Académica</p>
+            </div>
+            <div class="modal-body">
+                <div class="warning-box">
+                    <i class="ri-alert-line"></i>
+                    <p><strong>Acceso Restringido</strong><br>Solo para personal autorizado</p>
+                </div>
+                <div class="auth-features-grid">
+                    <div class="auth-feature-item" style="animation-delay: 0s;">
+                        <i class="ri-team-line"></i>
+                    </div>
+                    <div class="auth-feature-item" style="animation-delay: 0.2s;">
+                        <i class="ri-calendar-event-line"></i>
+                    </div>
+                    <div class="auth-feature-item" style="animation-delay: 0.4s;">
+                        <i class="ri-money-dollar-circle-line"></i>
+                    </div>
+                    <div class="auth-feature-item" style="animation-delay: 0.6s;">
+                        <i class="ri-music-2-line"></i>
+                    </div>
+                    <div class="auth-feature-item" style="animation-delay: 0.8s;">
+                        <i class="ri-admin-line"></i>
+                    </div>
+                </div>
+                <form id="auth-form">
+                    <label for="access-code">Código de Acceso</label>
+                    <input type="password" id="access-code" placeholder="Ingrese su código" autocomplete="off" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ri-login-box-line"></i> Ingresar
+                    </button>
+                    <p class="error-message" id="auth-error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
